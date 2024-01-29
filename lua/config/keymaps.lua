@@ -32,6 +32,9 @@ map('n', 'J', ':BufferLineCyclePrev<CR>', opt)
 map('n', 'gl', ':BufferLineCycleNext<CR>', opt)
 map('n', 'K', ':BufferLineCycleNext<CR>', opt)
 
+-- other
+map('n', 'U', '<C-R>', opt)
+
 -- 窗口操作
 -- map('n', '<leader>sv', ':vsp<CR>', opt)
 -- map('n', '<leader>sh', ':sp<CR>', opt)
@@ -45,7 +48,12 @@ map("i", "<A-S-J>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
 map("i", "<A-S-K>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 map("v", "<A-S-J>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<A-S-K>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
--- 插件快捷键
-local pluginKeys = {}
 
-return pluginKeys
+map("n", "<leader>r", ":lua runFireFox()<CR>", opt)
+
+function runFireFox()
+    vim.fn.execute('MarkdownPreview')
+    vim.fn.execute('cd ~/')
+    vim.fn.execute('!sh open_firefox.sh')
+    vim.fn.execute('cd -')
+end
