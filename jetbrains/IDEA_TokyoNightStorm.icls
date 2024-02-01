@@ -1,10 +1,10 @@
-<scheme name="TokyoNightStorm - change" version="142" parent_scheme="Darcula">
+<scheme name="IDEA-TokyoNightStorm" version="142" parent_scheme="Darcula">
   <metaInfo>
-    <property name="created">2024-01-29T23:30:48</property>
+    <property name="created">2024-02-01T23:09:38</property>
     <property name="ide">Idea</property>
     <property name="ideVersion">2023.3.2.0.0</property>
-    <property name="modified">2024-01-29T23:31:02</property>
-    <property name="originalScheme">TokyoNightStorm - change</property>
+    <property name="modified">2024-02-01T23:09:45</property>
+    <property name="originalScheme">IDEA-TokyoNightStorm</property>
   </metaInfo>
   <colors>
     <option name="ADDED_LINES_COLOR" value="73daca" />
@@ -546,7 +546,8 @@
     </option>
     <option name="EXECUTIONPOINT_ATTRIBUTES">
       <value>
-        <option name="BACKGROUND" value="2c4353" />
+        <option name="BACKGROUND" value="a4252d" />
+        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="FOLDED_TEXT_ATTRIBUTES">
