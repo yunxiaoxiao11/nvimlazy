@@ -1,8 +1,8 @@
-" set Leader key
+" set leader key
 nnoremap <SPACE> <Nop>
 vnoremap <SPACE> <Nop>
-let mapLeader = " "
-set timeoutlen = 800
+let mapleader=" "
+set timeoutlen=800
 
 " search
 set hlsearch
@@ -11,25 +11,24 @@ set smartcase
 set ignorecase
 nnoremap <ESC> <ESC>:nohlsearch<CR>
 vnoremap <ESC> <ESC>:nohlsearch<CR>
+nnoremap <leader>/ /<C-R>"<CR>
 
 " other
 set showmode
-set laststatus = 2
-set scrolloff = 3
+set laststatus=2
+set scrolloff=3
 set showcmd
+set number relativenumber
 
 " plugins & remap plugins shortcuts
 set easymotion
-map <Leader>f <Plug>(easymotion-s)
+map <leader>f <Plug>(easymotion-s)
 
 "set sneak
 "map f <Plug>(sneak-s)
 "map F <Plug>(sneak-S)
 
 set NERDTree
-"map <Leader>e :action SelectInProjectView<CR>
-"nnoremap <Leader>d :NERDTreeFocus<CR>
-
 set surround
 "nmap S <Plug>VSurround
 "xmap S <Plug>VSurround
@@ -55,18 +54,15 @@ set highlightedyank
 set vim-paragraph-motion
 set textobj-indent
 set matchit
-"set which-key
+set which-key
+set notimeout
 "set ReplaceWithRegister
 "set keep-english-in-normal-and-restore-in-insert
 
-" Idea specific settings
-set ideajoin
-set idearefactormode = keep
-
-" edit vimrc
-nnoremap <Leader>ve :e ~/.ideavimrc<CR>
-nnoremap <Leader>vw :w!<CR>
-nnoremap <Leader>vs :source ~/.ideavimrc<CR>
+" Edit ideavimrc
+nnoremap <leader>ve :e ~/.ideavimrc<CR>
+nnoremap <leader>vw :w!<CR>
+nnoremap <leader>vs :source ~/.ideavimrc<CR>
 
 " Insert mode shortcut
 inoremap <C-h> <Left>
@@ -77,15 +73,9 @@ inoremap <C-a> <Home>
 inoremap <C-e> <End>
 inoremap <C-d> <Delete>
 
-" intellij built in key map
-nnoremap <Leader>r :action Refactorings.QuickListPopupAction<CR>
-
-" build and compile code
-nnoremap <Leader>mr :action Maven.Reimport<CR>
-
-"toggle something
-"toggle track vim action Id
-nnoremap ta :action VimFindActionIdAction<CR>
+" Idea specific settings
+set ideajoin
+set idearefactormode=keep
 
 " run and debug
 nnoremap ,d :action Debug<CR>
@@ -93,22 +83,16 @@ nnoremap ,r :action Run<CR>
 nnoremap ,c :action CompileDirty<CR>
 nnoremap ,b :action ToggleLineBreakpoint<CR>
 nnoremap ,v :action ViewBreakpoints<CR>
+nnoremap ,e :action EditBreakpoint<CR>
 nnoremap ,s :action Stop<CR>
 
 " code actions
 nnoremap R :action RenameElement<CR>
-"nnoremap == :action ReformatCode<CR>
-"vnoremap = :action ReformatCode<CR>
+vnoremap = :action ReformatCode<CR>
+nnoremap == :action ReformatCode<CR>
 "nnoremap -- :action OptimizeImports<CR>
 
 "--------------------
-
-" Don't use Ex mode, use Q for formatting.
-map Q gq
-
-"以下两条命令开启相对行"
-set nu
-set relativenumber
 
 " 其他模式快速移动
 map H ^
@@ -117,63 +101,151 @@ nnoremap J gT
 vnoremap J gT
 nnoremap K gt
 vnoremap K gt
-nnoremap <Leader>J J
+nnoremap zh 50zh
+nnoremap zl 50zl
+nnoremap <leader>j J
+nnoremap U :redo<CR>
+vnoremap U :redo<CR>
 
 inoremap jj <ESC>
 inoremap JJ <ESC>
-nnoremap <Leader>n :normal<CR>
-nnoremap <Leader>i H
-nnoremap <Leader>j M
-nnoremap <Leader>n L
-
-" 左右移动视野
-nnoremap zh 50zh
-nnoremap zl 50zl
+nnoremap <leader>n :normal<CR>
+"nnoremap <leader>i H
+"nnoremap <leader>j M
+"nnoremap <leader>n L
 
 " Window operation
-set so = 3
-nnoremap <Space>ww <C-W>w
-nnoremap <Leader>wd <C-W>c
+set so=3
+nnoremap <C--> <C-W>s
+nnoremap <C-\> <C-W>v
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
-nnoremap <Leader>ws <C-W>s
-nnoremap <Leader>w- <C-W>s
-noremap <Leader>wv <C-W>v
-nnoremap <Leader>w\| <C-W>v
 
 " copy and paste
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>P "0p
-vnoremap Y "+y
-nnoremap yy V<Leader>y
-nnoremap <Leader>/ /<C-R>"<CR>
+set clipboard+=unnamedplus
+noremap <leader>y "*y
+noremap <leader>p "0p
+noremap <leader>P "*p
+nnoremap yy "+yy
+"vnoremap Y "+y
+"--默认dd删除不保存到剪贴板
+nnoremap x "_x
+nnoremap X "_X
+nnoremap d "_d
+nnoremap D "_D
+
+"--使用退格键删除光标前一个字符（普通模式）
+"nnoremap <Backspace> i<BS><Esc>
+"--使用退格键删除光标前一个字符（可视模式）
+"vmap <Backspace> di
+vnoremap d "_d
+
+" --------- IDE leader ----------
+nnoremap <leader>1 :action ToggleZenMode<CR>
+nnoremap <leader>2 :action ToggleFullScreen<CR>
+nnoremap <leader>h :action ToggleFullScreen<CR>
+nnoremap <leader>er :action ShowErrorDescription<CR>
+nnoremap <leader>r1 :action Refactorings.QuickListPopupAction<CR>
+nnoremap <Leader>rf :action RenameFile<CR>
+nnoremap <leader>qq :q<CR>
+nnoremap <leader>qa :action CloseAllEditorsButActive<CR>
+nnoremap <leader>qh :action CloseAllToTheLeft<CR>
+nnoremap <leader>ql :action CloseAllToTheRight<CR>
 
 "---------- IDE g ----------
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :<C-u>action GotoSuperMethod<CR>
 nnoremap gu :<C-u>action ShowUsages<CR>
 nnoremap gf :<C-u>action GotoFile<CR>
+nnoremap gh :action ShowHoverInfo<CR>
 nnoremap gj :action Back<CR>
 nnoremap gk :action Forward<CR>
+nnoremap gh :action QuickJavaDoc<cr>
 nnoremap gm :<C-u>action GotoSymbol<CR>
-nnoremap gr :<C-u>action RecentFiles<CR>
-nnoremap gt :<C-u>action GotoTest<CR>
 
 "---------- IDE t ----------
 nnoremap ta :action Annotate<CR>
-nnoremap tb :action ToggleLineBreakpoint<CR>
 nnoremap tf :action FileStructurePopup<CR>
 nnoremap ti :action QuickActions<CR>
-nnoremap tm :action ToggleBookmark<CR>
 nnoremap to :<C-u>action RecentProjectListGroup<CR>
 nnoremap tp :action ShowPopupMenu<CR>
 
-nnoremap <Leader>er :action ShowErrorDescription<CR>
+" Which key config
+let g:WhichKeyDesc_Esc_Nohlsearch = "<Esc> Esc_Nohlsearch"
+let g:WhichKeyDesc_SearchWithClip = "<leader>/ SearchWithClip"
 
-" --------- IDE config ----------
-nnoremap <Leader>1 :action ToggleZenMode<CR>
-nnoremap <Leader>2 :action ToggleFullScreen<CR>
-nnoremap <Leader>r :action Refactorings.QuickListPopupAction<CR>
+let g:WhichKeyDesc_EditVimConfig = "<leader>ve EditVimConfig"
+let g:WhichKeyDesc_SaveVimConfig = "<leader>vw SaveVimConfig"
+let g:WhichKeyDesc_ReloadVimConfig = "<leader>vs ReloadVimConfig"
+
+let g:WhichKeyDesc_InsertLeft = "<C-h> InsertLeft"
+let g:WhichKeyDesc_InsertRight = "<C-l> InsertRight"
+let g:WhichKeyDesc_InsertUp = "<C-k> InsertUp"
+let g:WhichKeyDesc_InsertDown = "<C-j> InsertDown"
+let g:WhichKeyDesc_InsertHome = "<C-a> InsertHome"
+let g:WhichKeyDesc_InsertEnd = "<C-e> InsertEnd"
+let g:WhichKeyDesc_InsertDelete = "<C-d> InsertDelete"
+
+let g:WhichKeyDesc_RunAsDebug = ",d RunAsDebug"
+let g:WhichKeyDesc_Run = ",r Run"
+let g:WhichKeyDesc_CompileDirty = ",c CompileDirty"
+let g:WhichKeyDesc_ToggleLineBreakpoint = ",b ToggleLineBreakpoint"
+let g:WhichKeyDesc_ViewBreakpoints = ",v ViewBreakpoints"
+let g:WhichKeyDesc_EditBreakpoint = ",e EditBreakpoint"
+let g:WhichKeyDesc_Stop = ",s Stop"
+
+let g:WhichKeyDesc_Redo = "U Redo"
+let g:WhichKeyDesc_NormalMode = "<leader>n NormalMode"
+
+let g:WhichKeyDesc_SplitHorizon = "<C-减号> SplitHorizon"
+let g:WhichKeyDesc_SplitVertical = "<C-反斜杠> SplitVertical"
+let g:WhichKeyDesc_Move2LeftWindow = "<C-h> Move2LeftWindow"
+let g:WhichKeyDesc_Move2RightWindow = "<C-l> Move2RightWindow"
+let g:WhichKeyDesc_Move2BeloWindow = "<C-j> Move2BeloWindow"
+let g:WhichKeyDesc_Move2AboveWindow = "<C-k> Move2AboveWindow"
+
+let g:WhichKeyDesc_Copied2SysClipBoard = "<leader>y Copied2SysClipBoard"
+let g:WhichKeyDesc_PasteFrom0Reg = "<leader>p PasteFrom0Reg"
+let g:WhichKeyDesc_PasteFromSysClipBoard = "<leader>P PasteFromSysClipBoard"
+
+let g:WhichKeyDesc_CopiedLine2SysClipBoard = "yy CopiedLine2SysClipBoard"
+
+" plugins
+let g:WhichKeyDesc_EasyMotion = "<leader>f EasyMotion"
+
+let g:WhichKeyDesc_NextWholeOccurrence = "<A-S-j> NextWholeOccurrence"
+let g:WhichKeyDesc_SkipOccurrence = "<A-S-n> SkipOccurrence"
+let g:WhichKeyDesc_RemoveOccurrence = "<A-S-k> RemoveOccurrence"
+let g:WhichKeyDesc_AllWholeOccurrences = "<C-A-j> AllWholeOccurrences"
+" g
+let g:WhichKeyDesc_GotoImplementation = "gi GotoImplementation"
+let g:WhichKeyDesc_GotoSuperMethod = "gs GotoSuperMethod"
+let g:WhichKeyDesc_ShowUsages = "gu ShowUsages"
+let g:WhichKeyDesc_GotoFile = "gf GotoFile"
+let g:WhichKeyDesc_Back = "gj Back"
+let g:WhichKeyDesc_Forward = "gk Forward"
+let g:WhichKeyDesc_QuickJavaDoc = "gh QuickJavaDoc"
+let g:WhichKeyDesc_GotoSymbol = "gm GotoSymbol"
+let g:WhichKeyDesc_CommentByLineComment = "gcc CommentByLineComment"
+" t
+let g:WhichKeyDesc_Annotate = "ta Annotate"
+let g:WhichKeyDesc_FileStructurePopup = "tf FileStructurePopup"
+let g:WhichKeyDesc_QuickActions = "ti QuickActions"
+let g:WhichKeyDesc_RecentProjectListGroup = "to RecentProjectListGroup"
+let g:WhichKeyDesc_ShowPopupMenu = "tp ShowPopupMenu"
+
+let g:WhichKeyDesc_ShowErrorDescription = "<leader>er ShowErrorDescription"
+
+let g:WhichKeyDesc_ToggleZenMode = "<leader>1 ToggleZenMode"
+let g:WhichKeyDesc_ToggleFullScreen = "<leader>2 ToggleFullScreen"
+
+let g:WhichKeyDesc_ShowErrorDescription = "<leader>er ShowErrorDescription"
+let g:WhichKeyDesc_Refactorings.QuickListPopupAction = "<leader>r1 Refactorings.QuickListPopupAction"
+let g:WhichKeyDesc_RenameFile = "<leader>rf RenameFile"
+let g:WhichKeyDesc_Quit = "<leader>qq Quit"
+let g:WhichKeyDesc_CloseAllEditorsButActive = "<leader>qa CloseAllEditorsButActive"
+let g:WhichKeyDesc_CloseAllToTheLeft = "<leader>qh CloseAllToTheLeft"
+let g:WhichKeyDesc_CloseAllToTheRight = "<leader>ql CloseAllToTheRight"
+

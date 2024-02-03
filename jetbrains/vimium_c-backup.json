@@ -1,7 +1,7 @@
 {
 	"name": "Vimium C",
-	"@time": "2024/2/1 23:11:42",
-	"time": 1706800302823,
+	"@time": "2024/2/3 22:50:08",
+	"time": 1706971808100,
 	"environment": {
 		"extension": "1.99.997",
 		"platform": "win",
@@ -104,8 +104,6 @@
 	"keyLayout": 4,
 	"keyMappings": [
 		"#!no-check",
-		"mapKey H ^",
-		"mapKey L $",
 		"map w scrollPxUp",
 		"map s scrollPxDown",
 		"unmap u",
@@ -120,6 +118,8 @@
 		"map Z Vomnibar.activateHistoryInNewTab",
 		"unmap gt",
 		"unmap gT",
+		"unmap ^",
+		"map _ visitPreviousTab",
 		"map q LinkHints.activateHover",
 		""
 	],

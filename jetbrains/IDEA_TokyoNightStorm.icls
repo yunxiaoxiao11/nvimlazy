@@ -1,9 +1,9 @@
 <scheme name="IDEA-TokyoNightStorm" version="142" parent_scheme="Darcula">
   <metaInfo>
-    <property name="created">2024-02-01T23:09:38</property>
+    <property name="created">2024-02-03T22:50:51</property>
     <property name="ide">Idea</property>
-    <property name="ideVersion">2023.3.2.0.0</property>
-    <property name="modified">2024-02-01T23:09:45</property>
+    <property name="ideVersion">2023.3.3.0.0</property>
+    <property name="modified">2024-02-03T22:50:58</property>
     <property name="originalScheme">IDEA-TokyoNightStorm</property>
   </metaInfo>
   <colors>
@@ -62,11 +62,11 @@
     <option name="SOFT_WRAP_SIGN_COLOR" value="3b4261" />
     <option name="TEARLINE_COLOR" value="3b4261" />
     <option name="TOOLTIP" value="" />
-    <option name="VCS_ANNOTATIONS_COLOR_1" value="292e42" />
-    <option name="VCS_ANNOTATIONS_COLOR_2" value="292e42" />
-    <option name="VCS_ANNOTATIONS_COLOR_3" value="292e42" />
-    <option name="VCS_ANNOTATIONS_COLOR_4" value="292e42" />
-    <option name="VCS_ANNOTATIONS_COLOR_5" value="292e42" />
+    <option name="VCS_ANNOTATIONS_COLOR_1" value="2f5194" />
+    <option name="VCS_ANNOTATIONS_COLOR_2" value="2d416b" />
+    <option name="VCS_ANNOTATIONS_COLOR_3" value="283754" />
+    <option name="VCS_ANNOTATIONS_COLOR_4" value="242d42" />
+    <option name="VCS_ANNOTATIONS_COLOR_5" value="22252e" />
     <option name="VISUAL_INDENT_GUIDE" value="3b4261" />
     <option name="WHITESPACES" value="3b4261" />
     <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="e0af68" />
