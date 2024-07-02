@@ -10,7 +10,7 @@ map('n', 'H', '^', opt)
 map('v', 'H', '^', opt)
 map('n', 'L', '$', opt)
 map('v', 'L', '$', opt)
-map('n', 'dL', 'd$', opt)
+-- map('n', 'dL', 'd$', opt)
 
 -- I 模式下jj退出
 map('i', 'jj', '<ESC>', opt)
