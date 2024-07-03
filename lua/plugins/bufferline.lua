@@ -8,6 +8,8 @@ return {
         bufferline.setup {
             options = {
                 mode = 'buffers',
+                numbers='ordinal',
+                middle_mouse_command='bdelete! %d'
             }
         }
     end
