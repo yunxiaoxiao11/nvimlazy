@@ -1,4 +1,5 @@
 local map = vim.api.nvim_set_keymap
+local lazymap = LazyVim.safe_keymap_set
 local unmap = vim.api.nvim_del_keymap
 -- local map = LazyVim.safe_keymap_set
 local opt = { noremap = true, silent = true }
@@ -7,10 +8,10 @@ map('n', '<SPACE>', '<NOP>', opt)   -- 防止空格移动
 map('n', '<leader>u', '<NOP>', opt) -- 防止触发u
 
 -- 行跳转映射
-map('n', 'H', '^', opt)
-map('v', 'H', '^', opt)
-map('n', 'L', '$', opt)
-map('v', 'L', '$', opt)
+map("n", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line-start", expr = true, silent = true })
+map("v", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line-start", expr = true, silent = true })
+map("n", "L", "v:count == 0 ? 'g$' : '$'", { desc = "Line-end", expr = true, silent = true })
+map("v", "L", "v:count == 0 ? 'g$' : '$'", { desc = "Line-end", expr = true, silent = true })
 
 map('n', 'gj', '<c-o>', opt)
 map('n', 'gk', '<c-i>', opt)
@@ -52,10 +53,10 @@ map('v', '<A-S-K>', ":m '<-2<cr>gv=gv", { desc = 'Move up' })
 map('n', '<leader>r', ":lua runFireFox()<CR>", opt)
 
 function runFireFox()
-    vim.fn.execute('MarkdownPreview')
-    vim.fn.execute('cd ~/')
-    vim.fn.execute('!sh open_firefox.sh')
-    vim.fn.execute('cd -')
+  vim.fn.execute('MarkdownPreview')
+  vim.fn.execute('cd ~/')
+  vim.fn.execute('!sh open_firefox.sh')
+  vim.fn.execute('cd -')
 end
 
 -- map
