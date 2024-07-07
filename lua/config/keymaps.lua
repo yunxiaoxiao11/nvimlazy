@@ -12,6 +12,9 @@ map('v', 'H', '^', opt)
 map('n', 'L', '$', opt)
 map('v', 'L', '$', opt)
 
+map('n', 'gj', '<c-o>', opt)
+map('n', 'gk', '<c-i>', opt)
+
 -- I 模式下jj退出
 map('i', 'jj', '<ESC>', opt)
 map('i', 'JJ', '<ESC>', opt)
@@ -64,7 +67,11 @@ end
 -- unmap --
 -- flash
 unmap('n', 's')
+unmap('x', 's')
+unmap('o', 's')
 unmap('n', 'S')
+unmap('x', 'S')
+unmap('o', 'S')
 -- buffer
 unmap('n', '<leader>bb')
 unmap('n', '<leader>`')
