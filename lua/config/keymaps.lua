@@ -16,6 +16,8 @@ map("v", "L", "v:count == 0 ? 'g$' : '$'", { desc = "Line-end", expr = true, sil
 map('n', 'gj', '<c-o>', opt)
 map('n', 'gk', '<c-i>', opt)
 
+map('n', '{', '{b', opt)
+map('n', '}', '}w', opt)
 -- I 模式下jj退出
 map('i', 'jj', '<ESC>', opt)
 map('i', 'JJ', '<ESC>', opt)
