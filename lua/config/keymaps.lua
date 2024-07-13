@@ -1,11 +1,16 @@
 local map = vim.api.nvim_set_keymap
 local lazymap = LazyVim.safe_keymap_set
 local unmap = vim.api.nvim_del_keymap
--- local map = LazyVim.safe_keymap_set
 local opt = { noremap = true, silent = true }
 
-map('n', '<SPACE>', '<NOP>', opt)   -- 防止空格移动
-map('n', '<leader>u', '<NOP>', opt) -- 防止触发u
+-- NOP映射
+map('n', '<SPACE>', '<NOP>', opt)
+map('n', '<leader>u', '<NOP>', opt)
+map('n', '<leader>i', '<NOP>', opt)
+map('n', '<leader>r', '<NOP>', opt)
+map('n', '<leader>s', '<NOP>', opt)
+map('n', '<leader>t', '<NOP>', opt)
+map('n', '<leader>R', '<NOP>', opt)
 
 -- 行跳转映射
 map("n", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line-start", expr = true, silent = true })
@@ -27,7 +32,17 @@ map('i', '<A-k>', '<Up>', opt)
 map('i', '<A-l>', '<Right>', opt)
 map('i', '<A-a>', '<Home>', opt)
 map('i', '<A-e>', '<End>', opt)
-map('i', '<A-d>', '<Delete>', opt)
+map('i', '<A-u>', '<Backspace>', opt)
+map('i', '<A-i>', '<Delete>', opt)
+map('i', '<A-n>', '<C-o><C-e>', opt)
+map('i', '<A-m>', '<C-o><C-y>', opt)
+
+map('i', '<C-e>', '<C-o><C-e>', opt)
+map('i', '<C-y>', '<C-o><C-y>', opt)
+map('i', '<C-d>', '<C-o><C-d>', opt)
+map('i', '<C-u>', '<C-o><C-u>', opt)
+map('i', '<C-f>', '<C-o><C-f>', opt)
+map('i', '<C-b>', '<C-o><C-b>', opt)
 
 -- 重新映射J
 map('n', '<leader>j', 'J', opt)
@@ -43,14 +58,15 @@ map('n', '<leader>bo', ':BufferLineCloseOthers<CR>', opt)
 map('n', 'U', '<C-R>', opt)
 
 -- Move Lines
-map('n', '<A-S-J>', '<cmd>m .+1<cr>==', { desc = 'Move down' })
-map('n', '<A-S-K>', '<cmd>m .-2<cr>==', { desc = 'Move up' })
-map('i', '<A-S-J>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move down' })
-map('i', '<A-S-K>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move up' })
-map('v', '<A-S-J>', ":m '>+1<cr>gv=gv", { desc = 'Move down' })
-map('v', '<A-S-K>', ":m '<-2<cr>gv=gv", { desc = 'Move up' })
+map('n', '<leader>gi', 'gi', opt)
+-- map('n', '<A-S-J>', '<cmd>m .+1<cr>==', { desc = 'Move down' })
+-- map('n', '<A-S-K>', '<cmd>m .-2<cr>==', { desc = 'Move up' })
+map('i', '<A-S-J>', '<esc><cmd>m .+1<cr>==<leader>gi', { desc = 'Move down' })
+map('i', '<A-S-K>', '<esc><cmd>m .-2<cr>==<leader>gi', { desc = 'Move up' })
+map('v', '<A-J>', ":m '>+1<cr>gv=gv", { desc = 'Move down' })
+map('v', '<A-K>', ":m '<-2<cr>gv=gv", { desc = 'Move up' })
 
-map('n', '<leader>r', ":lua runFireFox()<CR>", opt)
+-- map('n', '<leader>r', ":lua runFireFox()<CR>", opt)
 
 function runFireFox()
   vim.fn.execute('MarkdownPreview')
@@ -88,5 +104,15 @@ unmap('n', '<leader>gL')
 -- lazyVim changeLog
 unmap('n', '<leader>L')
 -- windows
-unmap('n', '<leader>w-')
-unmap('n', '<leader>w|')
+unmap('n', '<leader>-')
+unmap('n', '<leader>|')
+-- noice
+map('n', '<leader>sn', '<NOP>', opt)
+unmap('n', '<leader>snl')
+unmap('n', '<leader>snh')
+unmap('n', '<leader>sna')
+unmap('n', '<leader>snd')
+unmap('n', '<leader>snt')
+-- telescope
+unmap('n', '<leader>fb')
+unmap('n', '<leader>ft')
