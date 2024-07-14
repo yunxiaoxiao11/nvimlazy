@@ -11,6 +11,7 @@ map('n', '<leader>r', '<NOP>', opt)
 map('n', '<leader>s', '<NOP>', opt)
 map('n', '<leader>t', '<NOP>', opt)
 map('n', '<leader>R', '<NOP>', opt)
+map('n', '<leader>x', '<NOP>', opt)
 
 -- 行跳转映射
 map("n", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line-start", expr = true, silent = true })

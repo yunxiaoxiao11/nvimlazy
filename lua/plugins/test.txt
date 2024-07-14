@@ -1,7 +1,0 @@
-require
-REQUIRE
-require
----search
-require
-test
-path

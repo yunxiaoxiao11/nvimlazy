@@ -123,13 +123,13 @@ return {
           options = {
             ['ignore-case'] = {
               value = "ignore-case",
-              icon = "[I]",
+              icon = "  ",
               desc = "ignore case"
             },
             ['hidden'] = {
               value = "hidden",
               desc = "hidden file",
-              icon = ""
+              icon = "  "
             },
             -- you can put any rg search option you want here it can toggle with
             -- show_option function
@@ -144,13 +144,13 @@ return {
           options = {
             ['ignore-case'] = {
               value = "-i",
-              icon = "[I]",
+              icon = "  ",
               desc = "ignore case"
             },
             ['hidden'] = {
               value = "--hidden",
               desc = "hidden file",
-              icon = "k"
+              icon = "  "
             },
           },
         },
@@ -162,7 +162,7 @@ return {
           options = {
             ['ignore-case'] = {
               value = "--ignore-case",
-              icon = "[I]",
+              icon = "  ",
               desc = "ignore case"
             },
           }
@@ -174,7 +174,7 @@ return {
           options = {
             ['ignore-case'] = {
               value = "i",
-              icon = "[I]",
+              icon = "  ",
               desc = "ignore case"
             },
           }
