@@ -4,14 +4,10 @@ local unmap = vim.api.nvim_del_keymap
 local opt = { noremap = true, silent = true }
 
 -- NOP映射
-map('n', '<SPACE>', '<NOP>', opt)
-map('n', '<leader>u', '<NOP>', opt)
+-- map('n', '<SPACE>', '<NOP>', opt)
 map('n', '<leader>i', '<NOP>', opt)
 map('n', '<leader>r', '<NOP>', opt)
-map('n', '<leader>s', '<NOP>', opt)
-map('n', '<leader>t', '<NOP>', opt)
 map('n', '<leader>R', '<NOP>', opt)
-map('n', '<leader>x', '<NOP>', opt)
 
 -- 行跳转映射
 map("n", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line-start", expr = true, silent = true })
@@ -42,11 +38,11 @@ map('i', '<C-e>', '<C-o><C-e>', opt)
 map('i', '<C-y>', '<C-o><C-y>', opt)
 map('i', '<C-d>', '<C-o><C-d>', opt)
 map('i', '<C-u>', '<C-o><C-u>', opt)
-map('i', '<C-f>', '<C-o><C-f>', opt)
-map('i', '<C-b>', '<C-o><C-b>', opt)
 
 -- 重新映射J
 map('n', '<leader>j', 'J', opt)
+map('n', '<leader>gi', 'gi', { desc = 'Go to Insert' })
+map('n', 'U', '<C-R>', opt)
 
 -- Buffer 操作
 map('n', 'J', ':BufferLineCyclePrev<CR>', opt)
@@ -55,13 +51,7 @@ map('n', '<leader>bl', ':BufferLineCloseRight<CR>', opt)
 map('n', '<leader>bh', ':BufferLineCloseLeft<CR>', opt)
 map('n', '<leader>bo', ':BufferLineCloseOthers<CR>', opt)
 
--- other
-map('n', 'U', '<C-R>', opt)
-
 -- Move Lines
-map('n', '<leader>gi', 'gi', opt)
--- map('n', '<A-S-J>', '<cmd>m .+1<cr>==', { desc = 'Move down' })
--- map('n', '<A-S-K>', '<cmd>m .-2<cr>==', { desc = 'Move up' })
 map('i', '<A-S-J>', '<esc><cmd>m .+1<cr>==<leader>gi', { desc = 'Move down' })
 map('i', '<A-S-K>', '<esc><cmd>m .-2<cr>==<leader>gi', { desc = 'Move up' })
 map('v', '<A-J>', ":m '>+1<cr>gv=gv", { desc = 'Move down' })

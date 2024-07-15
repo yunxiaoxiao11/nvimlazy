@@ -6,12 +6,12 @@ return {
     -- Populate the keys based on the user's options
     local opts = LazyVim.opts("mini.surround")
     local mappings = {
-      { opts.mappings.add,            desc = "Add Surrounding",                     mode = { "n", "v" } },
-      { opts.mappings.delete,         desc = "Delete Surrounding" },
-      { opts.mappings.find,           desc = "Find Right Surrounding" },
-      { opts.mappings.find_left,      desc = "Find Left Surrounding" },
-      { opts.mappings.highlight,      desc = "Highlight Surrounding" },
-      { opts.mappings.replace,        desc = "Replace Surrounding" },
+      { opts.mappings.add, desc = "Add Surrounding", mode = { "n", "v" } },
+      { opts.mappings.delete, desc = "Delete Surrounding" },
+      { opts.mappings.find, desc = "Find Right Surrounding" },
+      { opts.mappings.find_left, desc = "Find Left Surrounding" },
+      { opts.mappings.highlight, desc = "Highlight Surrounding" },
+      { opts.mappings.replace, desc = "Replace Surrounding" },
       { opts.mappings.update_n_lines, desc = "Update `MiniSurround.config.n_lines`" },
     }
     mappings = vim.tbl_filter(function(m)
