@@ -1,6 +1,6 @@
-return
-{
+return {
   "danymat/neogen",
+  event = "VeryLazy",
   cmd = "Neogen",
   keys = {
     {

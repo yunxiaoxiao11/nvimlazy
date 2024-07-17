@@ -45,6 +45,8 @@ map('n', '<leader>gi', 'gi', { desc = 'Go to Insert' })
 map('n', 'U', '<C-R>', opt)
 
 -- Buffer 操作
+-- 取消 K 键的默认映射
+vim.keymap.set('n', 'K', '<nop>', { desc = 'Disable default K mapping' })
 map('n', 'J', ':BufferLineCyclePrev<CR>', opt)
 map('n', 'K', ':BufferLineCycleNext<CR>', opt)
 map('n', '<leader>bl', ':BufferLineCloseRight<CR>', opt)
@@ -66,6 +68,15 @@ function runFireFox()
   vim.fn.execute('cd -')
 end
 
+-- 复制当前 buffer 所在的目录到剪贴板
+function CopyBufferDir()
+  local dir = vim.fn.expand('%:p:h')
+  vim.fn.jobstart({ 'sh', '-c', 'echo -n "' .. dir .. '" | xclip -selection clipboard' })
+  vim.notify('Copied current buffer directory: ' .. dir, vim.log.levels.INFO)
+end
+
+-- 将该功能绑定到 <leader>cd 快捷键上
+vim.keymap.set('n', '<leader>pwd', CopyBufferDir, { desc = 'Copy current buffer directory' })
 -- map
 -- local lazyterm = function()
 --     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, true, true), 'n', false)

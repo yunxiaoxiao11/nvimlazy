@@ -5,3 +5,12 @@
 `:MarkdownPreview`
 `cd ~/`
 `sh open_fire.sh`
+
+// lsp的K快捷键映射取消
+dir:/usr/share/nvim/runtime/lua/vim/lsp.lua
+line:361
+
+
+// 命令相关
+1. 输出当前buffer所在路径：echo expand('%:p:h')
+2. 输出命令结果到一个新的buffer：enew|pu=execute('hi')
