@@ -3,11 +3,13 @@ local lazymap = LazyVim.safe_keymap_set
 local unmap = vim.api.nvim_del_keymap
 local opt = { noremap = true, silent = true }
 
+vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', { desc = "Toggle Spectre" })
 -- NOP映射
 -- map('n', '<SPACE>', '<NOP>', opt)
-map('n', '<leader>i', '<NOP>', opt)
-map('n', '<leader>r', '<NOP>', opt)
-map('n', '<leader>R', '<NOP>', opt)
+map('n', '<leader>u', '<NOP>', opt)
+-- map('n', '<leader>i', '<NOP>', opt)
+-- map('n', '<leader>r', '<NOP>', opt)
+-- map('n', '<leader>R', '<NOP>', opt)
 
 -- 行跳转映射
 map("n", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line-start", expr = true, silent = true })
@@ -69,14 +71,15 @@ function runFireFox()
 end
 
 -- 复制当前 buffer 所在的目录到剪贴板
-function CopyBufferDir()
-  local dir = vim.fn.expand('%:p:h')
-  vim.fn.jobstart({ 'sh', '-c', 'echo -n "' .. dir .. '" | xclip -selection clipboard' })
-  vim.notify('Copied current buffer directory: ' .. dir, vim.log.levels.INFO)
-end
+-- function CopyBufferDir()
+--   local dir = vim.fn.expand('%:p:h')
+--   vim.fn.jobstart({ 'sh', '-c', 'echo -n "' .. dir .. '" | xclip -selection clipboard' })
+--   vim.notify('Copied current buffer dir: ' .. dir, vim.log.levels.INFO)
+-- end
+--
+-- -- 将该功能绑定到 <leader>cd 快捷键上
+-- vim.keymap.set('n', '<leader>pwd', CopyBufferDir, { desc = 'Copy current buffer directory' })
 
--- 将该功能绑定到 <leader>cd 快捷键上
-vim.keymap.set('n', '<leader>pwd', CopyBufferDir, { desc = 'Copy current buffer directory' })
 -- map
 -- local lazyterm = function()
 --     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, true, true), 'n', false)
@@ -98,13 +101,19 @@ unmap('n', '<leader>bD')
 -- lazygit
 unmap('n', '<leader>gg')
 unmap('n', '<leader>gG')
-unmap('n', '<leader>gb')
-unmap('n', '<leader>gB')
+-- unmap('n', '<leader>gb')
+-- unmap('n', '<leader>gB')
 unmap('n', '<leader>gf')
 unmap('n', '<leader>gl')
 unmap('n', '<leader>gL')
+unmap('n', '<leader>ui')
+unmap('n', '<leader>uI')
 -- lazyVim changeLog
 unmap('n', '<leader>L')
+-- lsp
+unmap('n', 'gi')
+-- unmap('n', 'gI')
+
 -- windows
 unmap('n', '<leader>-')
 unmap('n', '<leader>|')
@@ -115,6 +124,9 @@ unmap('n', '<leader>snh')
 unmap('n', '<leader>sna')
 unmap('n', '<leader>snd')
 unmap('n', '<leader>snt')
+-- terminal
+
 -- telescope
 unmap('n', '<leader>fb')
 unmap('n', '<leader>ft')
+unmap('n', '<leader>fT')
