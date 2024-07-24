@@ -19,6 +19,7 @@ set laststatus=2
 set scrolloff=3
 set showcmd
 set nu
+nnoremap <leader>rn :set rnu!<CR>
 
 " ------------------------ plugins & remap plugins shortcuts
 set easymotion
