@@ -4,6 +4,8 @@ local unmap = vim.api.nvim_del_keymap
 local opt = { noremap = true, silent = true }
 
 vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', { desc = "Toggle Spectre" })
+unmap('n', '<leader>/')
+vim.keymap.set("n", "<leader>/", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 -- NOP映射
 -- map('n', '<SPACE>', '<NOP>', opt)
 map('n', '<leader>u', '<NOP>', opt)

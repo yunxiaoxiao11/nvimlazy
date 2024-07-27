@@ -19,16 +19,17 @@ set laststatus=2
 set scrolloff=3
 set showcmd
 set nu
+set relativenumber
 nnoremap <leader>rn :set rnu!<CR>
 
-" ------------------------ plugins & remap plugins shortcuts
+" plugins & remap plugins shortcuts
 set easymotion
 map <leader>f <Plug>(easymotion-s)
 
 set NERDTree
 set surround
-" nmap S <Plug>VSurround
-" xmap S <Plug>VSurround
+"nmap S <Plug>VSurround
+"xmap S <Plug>VSurround
 
 set multiple-cursors
 nmap <A-S-j> <Plug>NextWholeOccurrence
@@ -39,24 +40,34 @@ nmap <A-S-k> <Plug>RemoveOccurrence
 xmap <A-S-k> <Plug>RemoveOccurrence
 nmap <A-C-j> <Plug>AllWholeOccurrences
 xmap <A-C-j> <Plug>AllWholeOccurrences
+xmap <C-j> <Plug>AllOccurrences
 
 set commentary
-" nnoremap gcc :action CommentByLineComment<CR>
-" vnoremap gcc :action CommentByLineComment<CR>
+"nnoremap gcc :action CommentByLineComment<CR>
+"vnoremap gcc :action CommentByLineComment<CR>
 
 " set argtextobj
 set exchange
+
+let g:textobj_entire_no_default_key_mappings = 1
 set textobj-entire
+omap ag <Plug>textobj-entire-a
+xmap ag <Plug>textobj-entire-a
+omap ig <Plug>textobj-entire-i
+xmap ig <Plug>textobj-entire-i
+
 set highlightedyank
 set vim-paragraph-motion
 set textobj-indent
+
 set matchit
 let b:match_words = '<:>,<tag>:</tag>,if:else'
-" set which-key
+
+"set which-key
 set notimeout
-" set ReplaceWithRegister
-" set keep-english-in-normal-and-restore-in-insert
-" ------------------------ plugins end
+set ReplaceWithRegister
+"set keep-english-in-normal-and-restore-in-insert
+
 " Edit ideavimrc
 nnoremap <leader>ve :e ~/.ideavimrc<CR>
 nnoremap <leader>vs :source ~/.ideavimrc<CR>
@@ -83,8 +94,8 @@ inoremap <C-b> <C-o><C-b>
 " line move keymaps
 inoremap <A-S-j> <Esc>:move+1<CR>i
 inoremap <A-S-k> <Esc>:move-2<CR>i
-vnoremap <A-S-j> <Esc>:move+1<CR>i
-vnoremap <A-S-k> <Esc>:move-2<CR>i
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 nnoremap <A-j> <Esc>:move+1<CR>
 nnoremap <A-k> <Esc>:move-2<CR>
@@ -98,21 +109,19 @@ set ideajoin
 set idearefactormode=keep
 
 " run and debug
-" nnoremap ,d :action Debug<CR>
-" nnoremap ,r :action Run<CR>
-" nnoremap ,c :action CompileDirty<CR>
-" nnoremap ,b :action ToggleLineBreakpoint<CR>
-" nnoremap ,v :action ViewBreakpoints<CR>
-" nnoremap ,e :action EditBreakpoint<CR>
-" nnoremap ,s :action Stop<CR>
+"nnoremap ,d :action Debug<CR>
+"nnoremap ,r :action Run<CR>
+"nnoremap ,c :action CompileDirty<CR>
+"nnoremap ,b :action ToggleLineBreakpoint<CR>
+"nnoremap ,v :action ViewBreakpoints<CR>
+"nnoremap ,e :action EditBreakpoint<CR>
+"nnoremap ,s :action Stop<CR>
 
 " code actions
 nnoremap R :action RenameElement<CR>
 vnoremap = :action ReformatCode<CR>
 nnoremap == :action ReformatCode<CR>
-" nnoremap -- :action OptimizeImports<CR>
-
-" --------------------
+"nnoremap -- :action OptimizeImports<CR>
 
 " 其他模式快速移动
 map H ^
@@ -130,12 +139,14 @@ vnoremap U :redo<CR>
 inoremap jj <ESC>
 inoremap JJ <ESC>
 nnoremap <leader>n :normal<CR>
-" nnoremap <leader>i H
-" nnoremap <leader>j M
-" nnoremap <leader>n L
+"nnoremap <leader>i H
+"nnoremap <leader>j M
+"nnoremap <leader>n L
 
 " Window operation
 set so=3
+nnoremap <C--> <C-W>s
+nnoremap <C-\> <C-W>v
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
@@ -165,7 +176,7 @@ nnoremap <leader>s :action ActivateStringManipulationToolWindow<CR>
 
 nnoremap <leader>gi gi
 
-" ---------- IDE g ----------
+"---------- IDE g ----------
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gD :action GotoDeclarationOnly<CR>
 nnoremap gi :action GotoImplementation<CR>
@@ -178,7 +189,7 @@ nnoremap gk :action Forward<CR>
 nnoremap gh :action QuickJavaDoc<cr>
 nnoremap gm :<C-u>action GotoSymbol<CR>
 
-" ---------- IDE t ----------
+"---------- IDE t ----------
 nnoremap ta :action Annotate<CR>
 nnoremap tf :action FileStructurePopup<CR>
 nnoremap ti :action QuickActions<CR>

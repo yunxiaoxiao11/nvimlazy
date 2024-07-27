@@ -8,4 +8,4 @@ vim.opt.list = false
 vim.opt.relativenumber = false
 vim.opt.wrap = true
 vim.opt.linebreak = true
-LazyVim.toggle.format(true)
+-- LazyVim.toggle.format(true)
