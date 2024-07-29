@@ -6,4 +6,3 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.list = false
 vim.opt.wrap = true
--- vim.opt.relativenumber = false

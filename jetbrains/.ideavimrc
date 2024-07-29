@@ -1,3 +1,4 @@
+
 " set leader key
 nnoremap <SPACE> <Nop>
 vnoremap <SPACE> <Nop>
@@ -16,7 +17,7 @@ nnoremap <leader>/ /<C-R>"<CR>
 " other
 set showmode
 set laststatus=2
-set scrolloff=3
+set scrolloff=5
 set showcmd
 set nu
 set relativenumber
@@ -195,3 +196,4 @@ nnoremap tf :action FileStructurePopup<CR>
 nnoremap ti :action QuickActions<CR>
 nnoremap to :<C-u>action RecentProjectListGroup<CR>
 nnoremap tp :action ShowPopupMenu<CR>
+

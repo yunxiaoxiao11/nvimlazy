@@ -1,23 +1,18 @@
 local map = vim.api.nvim_set_keymap
-local lazymap = LazyVim.safe_keymap_set
 local unmap = vim.api.nvim_del_keymap
 local opt = { noremap = true, silent = true }
 
 vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', { desc = "Toggle Spectre" })
-unmap('n','<leader>/')
 vim.keymap.set("n", "<leader>/", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+
 -- NOP映射
--- map('n', '<SPACE>', '<NOP>', opt)
 map('n', '<leader>u', '<NOP>', opt)
--- map('n', '<leader>i', '<NOP>', opt)
--- map('n', '<leader>r', '<NOP>', opt)
--- map('n', '<leader>R', '<NOP>', opt)
 
 -- 行跳转映射
-map("n", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line-start", expr = true, silent = true })
-map("v", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line-start", expr = true, silent = true })
-map("n", "L", "v:count == 0 ? 'g$' : '$'", { desc = "Line-end", expr = true, silent = true })
-map("v", "L", "v:count == 0 ? 'g$' : '$'", { desc = "Line-end", expr = true, silent = true })
+map("n", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line start", expr = true, silent = true })
+map("v", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line start", expr = true, silent = true })
+map("n", "L", "v:count == 0 ? 'g$' : '$'", { desc = "Line end", expr = true, silent = true })
+map("v", "L", "v:count == 0 ? 'g$' : '$'", { desc = "Line end", expr = true, silent = true })
 
 map('n', 'gj', '<c-o>', opt)
 map('n', 'gk', '<c-i>', opt)
@@ -31,7 +26,7 @@ map('i', '<A-h>', '<Left>', opt)
 map('i', '<A-j>', '<Down>', opt)
 map('i', '<A-k>', '<Up>', opt)
 map('i', '<A-l>', '<Right>', opt)
-map('i', '<A-a>', '<Home>', opt)
+map('i', '<A-a>', '<Esc>^i', opt)
 map('i', '<A-e>', '<End>', opt)
 map('i', '<A-u>', '<Backspace>', opt)
 map('i', '<A-i>', '<Delete>', opt)
@@ -89,13 +84,6 @@ end
 -- LazyVim.safe_keymap_set('i', '<c-/>', lazyterm, { desc = 'Terminal (Root Dir)' })
 
 -- unmap --
--- flash
-unmap('n', 's')
-unmap('x', 's')
-unmap('o', 's')
-unmap('n', 'S')
-unmap('x', 'S')
-unmap('o', 'S')
 -- buffer
 unmap('n', '<leader>bb')
 unmap('n', '<leader>`')
