@@ -31,4 +31,10 @@ return {
     })
     telescope.load_extension("live_grep_args")
   end,
+  keys = {
+    { '<leader>ft', false },
+    { '<leader>fT', false },
+    { 'gI',         false },
+    { "<leader>/",  ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", desc = 'live grep args' }
+  }
 }

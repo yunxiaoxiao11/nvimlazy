@@ -2,12 +2,6 @@ local map = vim.api.nvim_set_keymap
 local unmap = vim.api.nvim_del_keymap
 local opt = { noremap = true, silent = true }
 
-vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', { desc = "Toggle Spectre" })
-vim.keymap.set("n", "<leader>/", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-
--- NOP映射
-map('n', '<leader>u', '<NOP>', opt)
-
 -- 行跳转映射
 map("n", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line start", expr = true, silent = true })
 map("v", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line start", expr = true, silent = true })
@@ -45,7 +39,7 @@ map('n', 'U', '<C-R>', opt)
 
 -- Buffer 操作
 -- 取消 K 键的默认映射
-vim.keymap.set('n', 'K', '<nop>', { desc = 'Disable default K mapping' })
+-- vim.keymap.set('n', 'K', '<nop>', { desc = 'Disable default K mapping' })
 map('n', 'J', ':BufferLineCyclePrev<CR>', opt)
 map('n', 'K', ':BufferLineCycleNext<CR>', opt)
 map('n', '<leader>bl', ':BufferLineCloseRight<CR>', opt)
@@ -59,7 +53,6 @@ map('v', '<A-J>', ":m '>+1<cr>gv=gv", { desc = 'Move down' })
 map('v', '<A-K>', ":m '<-2<cr>gv=gv", { desc = 'Move up' })
 
 -- map('n', '<leader>r', ":lua runFireFox()<CR>", opt)
-
 function runFireFox()
   vim.fn.execute('MarkdownPreview')
   vim.fn.execute('cd ~/')
@@ -84,15 +77,10 @@ end
 -- LazyVim.safe_keymap_set('i', '<c-/>', lazyterm, { desc = 'Terminal (Root Dir)' })
 
 -- unmap --
--- buffer
-unmap('n', '<leader>bb')
-unmap('n', '<leader>`')
-unmap('n', '<leader>bD')
 -- lazygit
 unmap('n', '<leader>gg')
 unmap('n', '<leader>gG')
--- unmap('n', '<leader>gb')
--- unmap('n', '<leader>gB')
+unmap('n', '<leader>gB')
 unmap('n', '<leader>gf')
 unmap('n', '<leader>gl')
 unmap('n', '<leader>gL')
@@ -100,23 +88,7 @@ unmap('n', '<leader>ui')
 unmap('n', '<leader>uI')
 -- lazyVim changeLog
 unmap('n', '<leader>L')
--- lsp
-unmap('n', 'gi')
--- unmap('n', 'gI')
 
 -- windows
 unmap('n', '<leader>-')
 unmap('n', '<leader>|')
--- noice
-map('n', '<leader>sn', '<NOP>', opt)
-unmap('n', '<leader>snl')
-unmap('n', '<leader>snh')
-unmap('n', '<leader>sna')
-unmap('n', '<leader>snd')
-unmap('n', '<leader>snt')
--- terminal
-
--- telescope
-unmap('n', '<leader>fb')
-unmap('n', '<leader>ft')
-unmap('n', '<leader>fT')

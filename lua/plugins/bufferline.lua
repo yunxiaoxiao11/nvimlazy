@@ -12,5 +12,9 @@ return {
         middle_mouse_command = 'bdelete! %d'
       }
     }
-  end
+  end,
+  keys = {
+    { '<leader>bb', false },
+    { '<leader>bD', false },
+  }
 }

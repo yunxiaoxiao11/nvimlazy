@@ -207,5 +207,8 @@ return {
         -- { search_text = 'text1', replace_text = '', path = "" }
       }
     })
-  end
+  end,
+  keys = {
+    { '<leader>S', false }
+  }
 }
