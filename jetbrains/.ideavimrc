@@ -16,7 +16,7 @@ nnoremap <leader>/ /<C-R>"<CR>
 " other
 set showmode
 set laststatus=2
-set scrolloff=3
+set scrolloff=5
 set showcmd
 set nu
 set relativenumber
@@ -130,8 +130,8 @@ nnoremap J gT
 vnoremap J gT
 nnoremap K gt
 vnoremap K gt
-nnoremap zh 50zh
-nnoremap zl 50zl
+nnoremap zh 20zh
+nnoremap zl 20zl
 nnoremap <leader>j J
 nnoremap U :redo<CR>
 vnoremap U :redo<CR>
@@ -145,12 +145,14 @@ nnoremap <leader>n :normal<CR>
 
 " Window operation
 set so=3
-nnoremap <C--> <C-W>s
-nnoremap <C-\> <C-W>v
+nnoremap <C--> :action MoveTabDown<CR>
+nnoremap <C-\> :action MoveTabRight<CR>
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
+nnoremap <leader>cc :action Unsplit<CR>
+nnoremap <leader>ca :action UnsplitAll<CR>
 
 " copy and paste
 set clipboard+=unnamedplus
@@ -173,7 +175,7 @@ nnoremap <leader>bh :action CloseAllToTheLeft<CR>
 nnoremap <leader>bl :action CloseAllToTheRight<CR>
 nnoremap <leader>d :action EditorPopupMenu.Run<CR>
 nnoremap <leader>s :action ActivateStringManipulationToolWindow<CR>
-
+nnoremap \\b :action ToggleLineBreakpoint<CR>
 nnoremap <leader>gi gi
 
 "---------- IDE g ----------
