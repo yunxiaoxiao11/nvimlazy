@@ -9,6 +9,8 @@ set hlsearch
 set incsearch
 set smartcase
 set ignorecase
+nnoremap <leader>sc :set scs!<CR>
+nnoremap <leader>ic :set ignorecase!<CR>
 nnoremap <ESC> <ESC>:nohlsearch<CR>
 vnoremap <ESC> <ESC>:nohlsearch<CR>
 nnoremap <leader>/ /<C-R>"<CR>
@@ -20,13 +22,16 @@ set scrolloff=5
 set showcmd
 set nu
 set relativenumber
-nnoremap <leader>rn :set rnu!<CR>
+nnoremap <leader>nu :set nu!<CR>
+nnoremap <leader>rnu :set rnu!<CR>
 
-" plugins & remap plugins shortcuts
+" —————— plugins & remap plugins shortcuts start ——————
 set easymotion
 map <leader>f <Plug>(easymotion-s)
+nnoremap <leader>; :action AceLineStartsAction<CR>
 
 set NERDTree
+
 set surround
 "nmap S <Plug>VSurround
 "xmap S <Plug>VSurround
@@ -47,6 +52,7 @@ set commentary
 "vnoremap gcc :action CommentByLineComment<CR>
 
 " set argtextobj
+
 set exchange
 
 let g:textobj_entire_no_default_key_mappings = 1
@@ -57,22 +63,26 @@ omap ig <Plug>textobj-entire-i
 xmap ig <Plug>textobj-entire-i
 
 set highlightedyank
+
 set vim-paragraph-motion
+
 set textobj-indent
 
 set matchit
 let b:match_words = '<:>,<tag>:</tag>,if:else'
 
-"set which-key
+" set which-key
 set notimeout
+
 set ReplaceWithRegister
 "set keep-english-in-normal-and-restore-in-insert
+" —————— plugins & remap plugins shortcuts end ——————
 
-" Edit ideavimrc
+" edit ideavimrc
 nnoremap <leader>ve :e ~/.ideavimrc<CR>
-nnoremap <leader>vs :source ~/.ideavimrc<CR>
+nnoremap <leader>vs :source ~/.ideavimrc<CR>:nohlsearch<CR>
 
-" Insert mode shortcut
+" insert mode shortcut
 inoremap <A-h> <Left>
 inoremap <A-j> <Down>
 inoremap <A-k> <Up>
@@ -104,18 +114,28 @@ nnoremap <C-S-k> :action MoveStatementUp<CR>
 vnoremap <C-S-j> :action MoveStatementDown<CR>
 vnoremap <C-S-k> :action MoveStatementUp<CR>
 
-" Idea specific settings
+" jump map
+nnoremap <A-,> :action MethodDown<CR>
+nnoremap <A-.> :action MethodUp<CR>
+
+" idea specific settings
 set ideajoin
 set idearefactormode=keep
 
 " run and debug
-"nnoremap ,d :action Debug<CR>
-"nnoremap ,r :action Run<CR>
-"nnoremap ,c :action CompileDirty<CR>
-"nnoremap ,b :action ToggleLineBreakpoint<CR>
-"nnoremap ,v :action ViewBreakpoints<CR>
-"nnoremap ,e :action EditBreakpoint<CR>
-"nnoremap ,s :action Stop<CR>
+nnoremap \\c :action CompileDirty<CR>
+nnoremap \\d :action Debug<CR>
+nnoremap \\r :action Run<CR>
+nnoremap \\s :action Stop<CR>
+nnoremap \\b :action ToggleLineBreakpoint<CR>
+nnoremap \\v :action ViewBreakpoints<CR>
+nnoremap \\e :action EditBreakpoint<CR>
+
+" bookmark
+nnoremap <leader>bz :action Bookmarks<CR>
+nnoremap <leader>bs :action ShowBookmarks<CR>
+nnoremap <leader>be :action EditBookmark<CR>
+nnoremap <leader>re :action MemoryView.ShowInstances<CR>
 
 " code actions
 nnoremap R :action RenameElement<CR>
@@ -143,7 +163,7 @@ nnoremap <leader>n :normal<CR>
 "nnoremap <leader>j M
 "nnoremap <leader>n L
 
-" Window operation
+" window operation
 set so=3
 nnoremap <C--> :action MoveTabDown<CR>
 nnoremap <C-\> :action MoveTabRight<CR>
@@ -164,36 +184,31 @@ nnoremap yy "+yy
 " --------- IDE leader ----------
 nnoremap <leader>1 :action ToggleZenMode<CR>
 nnoremap <leader>2 :action ToggleFullScreen<CR>
-nnoremap <leader>h :action ShowHoverInfo<CR>
-nnoremap <leader>l :action TypeHierarchy<CR>
 nnoremap <leader>er :action ShowErrorDescription<CR>
-nnoremap <leader>r1 :action Refactorings.QuickListPopupAction<CR>
 nnoremap <Leader>rf :action RenameFile<CR>
 nnoremap <leader>bd :q<CR>
 nnoremap <leader>bo :action CloseAllEditorsButActive<CR>
 nnoremap <leader>bh :action CloseAllToTheLeft<CR>
 nnoremap <leader>bl :action CloseAllToTheRight<CR>
 nnoremap <leader>d :action EditorPopupMenu.Run<CR>
-nnoremap <leader>s :action ActivateStringManipulationToolWindow<CR>
-nnoremap \\b :action ToggleLineBreakpoint<CR>
 nnoremap <leader>gi gi
 
-"---------- IDE g ----------
+" ---------- IDE g ----------
 nnoremap gd :action GotoDeclaration<CR>
-nnoremap gD :action GotoDeclarationOnly<CR>
 nnoremap gi :action GotoImplementation<CR>
-nnoremap gs :<C-u>action GotoSuperMethod<CR>
-nnoremap gu :<C-u>action ShowUsages<CR>
-nnoremap gf :<C-u>action GotoFile<CR>
-nnoremap gh :action ShowHoverInfo<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gu :action ShowUsages<CR>
+nnoremap gh :action QuickJavaDoc<CR>
+nnoremap gn :action ShowHoverInfo<CR>
+nnoremap gl :action TypeHierarchy<CR>
 nnoremap gj :action Back<CR>
 nnoremap gk :action Forward<CR>
-nnoremap gh :action QuickJavaDoc<cr>
-nnoremap gm :<C-u>action GotoSymbol<CR>
+nnoremap gf :action GotoFile<CR>
+nnoremap gm :action GotoSymbol<CR>
 
-"---------- IDE t ----------
+" ---------- IDE t ----------
 nnoremap ta :action Annotate<CR>
 nnoremap tf :action FileStructurePopup<CR>
 nnoremap ti :action QuickActions<CR>
-nnoremap to :<C-u>action RecentProjectListGroup<CR>
+nnoremap to :action RecentProjectListGroup<CR>
 nnoremap tp :action ShowPopupMenu<CR>
