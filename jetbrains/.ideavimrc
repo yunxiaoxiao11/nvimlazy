@@ -125,11 +125,12 @@ set idearefactormode=keep
 " run and debug
 nnoremap \\c :action CompileDirty<CR>
 nnoremap \\d :action Debug<CR>
-nnoremap \\r :action Run<CR>
 nnoremap \\s :action Stop<CR>
 nnoremap \\b :action ToggleLineBreakpoint<CR>
 nnoremap \\v :action ViewBreakpoints<CR>
 nnoremap \\e :action EditBreakpoint<CR>
+nnoremap \\m :action XDebugger.MuteBreakpoints<CR>
+nnoremap \\r :action JRebel Debug<CR>
 
 " bookmark
 nnoremap <leader>bz :action Bookmarks<CR>
@@ -192,6 +193,8 @@ nnoremap <leader>bh :action CloseAllToTheLeft<CR>
 nnoremap <leader>bl :action CloseAllToTheRight<CR>
 nnoremap <leader>d :action EditorPopupMenu.Run<CR>
 nnoremap <leader>gi gi
+nnoremap <leader>o :action OpenInBrowser<CR>
+nnoremap <leader>m :action MavenRunHelperCleanInstall<CR>
 
 " ---------- IDE g ----------
 nnoremap gd :action GotoDeclaration<CR>
