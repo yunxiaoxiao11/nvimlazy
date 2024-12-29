@@ -24,11 +24,19 @@ set nu
 set relativenumber
 nnoremap <leader>nu :set nu!<CR>
 nnoremap <leader>rnu :set rnu!<CR>
+vnoremap _ :b#<CR>
+nnoremap _ :b#<CR>
 
 " —————— plugins & remap plugins shortcuts start ——————
-set easymotion
-map <leader>f <Plug>(easymotion-s)
-nnoremap <leader>; :action AceLineStartsAction<CR>
+"set easymotion
+"map <leader>f <Plug>(easymotion-s)
+"nnoremap <leader>; :action AceLineStartsAction<CR>
+map <Leader>f <Action>(flash.search)
+
+set quickscope
+let g:qs_primary_color = '#ff0000'
+let g:qs_secondary_color = '#ffff00'
+let g:qs_disable_for_diffs = 0
 
 set NERDTree
 
@@ -51,8 +59,6 @@ set commentary
 "nnoremap gcc :action CommentByLineComment<CR>
 "vnoremap gcc :action CommentByLineComment<CR>
 
-" set argtextobj
-
 set exchange
 
 let g:textobj_entire_no_default_key_mappings = 1
@@ -62,6 +68,10 @@ xmap ag <Plug>textobj-entire-a
 omap ig <Plug>textobj-entire-i
 xmap ig <Plug>textobj-entire-i
 
+set argtextobj
+
+set functiontextobj
+
 set highlightedyank
 
 set vim-paragraph-motion
@@ -70,6 +80,10 @@ set textobj-indent
 
 set matchit
 let b:match_words = '<:>,<tag>:</tag>,if:else'
+
+set switch
+
+set peekaboo
 
 " set which-key
 set notimeout
@@ -117,6 +131,8 @@ vnoremap <C-S-k> :action MoveStatementUp<CR>
 " jump map
 nnoremap <A-,> :action MethodDown<CR>
 nnoremap <A-.> :action MethodUp<CR>
+inoremap <A-,> :action MethodDown<CR>
+inoremap <A-.> :action MethodUp<CR>
 
 " idea specific settings
 set ideajoin
@@ -215,3 +231,4 @@ nnoremap tf :action FileStructurePopup<CR>
 nnoremap ti :action QuickActions<CR>
 nnoremap to :action RecentProjectListGroup<CR>
 nnoremap tp :action ShowPopupMenu<CR>
+
