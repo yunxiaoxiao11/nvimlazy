@@ -1,0 +1,10 @@
+neogen	neogen.txt	/*neogen*
+neogen-annotation	neogen.txt	/*neogen-annotation*
+neogen-changelog	neogen.txt	/*neogen-changelog*
+neogen-configuration	neogen.txt	/*neogen-configuration*
+neogen-develop	neogen.txt	/*neogen-develop*
+neogen-snippet-integration	neogen.txt	/*neogen-snippet-integration*
+neogen-template-configuration	neogen.txt	/*neogen-template-configuration*
+neogen-usage	neogen.txt	/*neogen-usage*
+neogen.generate()	neogen.txt	/*neogen.generate()*
+neogen.setup()	neogen.txt	/*neogen.setup()*
