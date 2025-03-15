@@ -100,16 +100,7 @@ unmap('o', 'S')
 unmap('n', '<leader>bb')
 unmap('n', '<leader>`')
 unmap('n', '<leader>bD')
--- lazygit
-unmap('n', '<leader>gg')
-unmap('n', '<leader>gG')
--- unmap('n', '<leader>gb')
--- unmap('n', '<leader>gB')
-unmap('n', '<leader>gf')
-unmap('n', '<leader>gl')
-unmap('n', '<leader>gL')
-unmap('n', '<leader>ui')
-unmap('n', '<leader>uI')
+
 -- lazyVim changeLog
 unmap('n', '<leader>L')
 -- lsp
