@@ -9,3 +9,9 @@ vim.opt.relativenumber = false
 vim.opt.wrap = true
 vim.opt.linebreak = true
 -- LazyVim.toggle.format(true)
+if vim.g.neovide then
+  vim.o.guifont = "FiraCode Nerd Font:h11" -- text below applies for VimScript
+  vim.g.neovide_cursor_vfx_mode = "railgun"
+  vim.g.neovide_cursor_animation_length = 0.07
+  vim.g.neovide_cursor_trail_size = 0.4
+end

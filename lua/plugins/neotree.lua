@@ -63,9 +63,19 @@ return {
     },
     window = {
       mappings = {
+        ["oc"] = "none",
+        ["od"] = "none",
+        ["og"] = "none",
+        ["om"] = "none",
+        ["on"] = "none",
+        ["os"] = "none",
+        ["ot"] = "none",
+        ["o"] = "none",
         ["l"] = "open",
         ["h"] = "close_node",
         ["<space>"] = "none",
+        ["C"] = "none",
+        ["X"] = "close_all_nodes",
         ["Y"] = {
           function(state)
             local node = state.tree:get_node()
@@ -106,7 +116,7 @@ return {
     local events = require("neo-tree.events")
     opts.event_handlers = opts.event_handlers or {}
     vim.list_extend(opts.event_handlers, {
-      { event = events.FILE_MOVED,   handler = on_move },
+      { event = events.FILE_MOVED, handler = on_move },
       { event = events.FILE_RENAMED, handler = on_move },
     })
     require("neo-tree").setup(opts)
