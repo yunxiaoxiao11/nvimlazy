@@ -83,3 +83,9 @@ end
 --     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, true, true), 'n', false)
 --     LazyVim.terminal(nil, { cwd = LazyVim.root() }) end
 -- LazyVim.safe_keymap_set('i', '<c-/>', lazyterm, { desc = 'Terminal (Root Dir)' })
+-- 设置鼠标右键在所有模式下粘贴系统剪贴板内容
+vim.api.nvim_set_keymap("n", "<RightMouse>", '"+p', { noremap = true, silent = true }) -- 普通模式
+vim.api.nvim_set_keymap("i", "<RightMouse>", '<C-o>"+p', { noremap = true, silent = true }) -- 插入模式
+vim.api.nvim_set_keymap("v", "<RightMouse>", '"+p', { noremap = true, silent = true }) -- 可视模式
+vim.api.nvim_set_keymap("c", "<RightMouse>", "<C-r>+", { noremap = true, silent = true }) -- 命令行模式
+vim.api.nvim_set_keymap("t", "<RightMouse>", '<C-\\><C-n>"+pi', { noremap = true, silent = true }) -- 终端模式

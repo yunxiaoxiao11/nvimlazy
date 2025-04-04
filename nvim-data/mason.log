@@ -1,7 +1,0 @@
-[INFO  2024/12/30 22:19:26] ...m-data/lazy/mason.nvim/lua/mason-core/installer/init.lua:184: Executing installer for Package(name=stylua) {}
-[INFO  2024/12/30 22:19:26] ...m-data/lazy/mason.nvim/lua/mason-core/installer/init.lua:184: Executing installer for Package(name=shfmt) {}
-[INFO  2024/12/30 22:19:26] ...m-data/lazy/mason.nvim/lua/mason-core/installer/init.lua:184: Executing installer for Package(name=lua-language-server) {}
-[INFO  2024/12/30 22:19:43] ...m-data/lazy/mason.nvim/lua/mason-core/installer/init.lua:245: Installation succeeded for Package(name=shfmt)
-[ERROR 2024/12/30 22:19:56] ...zy/mason.nvim/lua/mason-core/installer/registry/init.lua:186: Failed to download schemas Package(name=lua-language-server) Schema download timed out.
-[INFO  2024/12/30 22:19:56] ...m-data/lazy/mason.nvim/lua/mason-core/installer/init.lua:245: Installation succeeded for Package(name=lua-language-server)
-[INFO  2024/12/30 22:19:56] ...m-data/lazy/mason.nvim/lua/mason-core/installer/init.lua:245: Installation succeeded for Package(name=stylua)

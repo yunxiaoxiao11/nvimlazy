@@ -1,4 +1,4 @@
-return{
+return {
   "gbprod/yanky.nvim",
   recommended = true,
   desc = "Better Yank/Paste",
@@ -7,16 +7,16 @@ return{
     highlight = {
       on_put = true,
       on_yank = true,
-      timer = 200
+      timer = 500,
     },
     ring = {
-    history_length = 25,
-    -- storage = "shada",
-    -- storage_path = vim.fn.stdpath("data") .. "/databases/yanky.db", -- Only for sqlite storage
-    -- sync_with_numbered_registers = true,
-    -- cancel_event = "update",
-    -- ignore_registers = { "_" },
-    -- update_register_on_cycle = false,
+      history_length = 25,
+      -- storage = "shada",
+      -- storage_path = vim.fn.stdpath("data") .. "/databases/yanky.db", -- Only for sqlite storage
+      -- sync_with_numbered_registers = true,
+      -- cancel_event = "update",
+      -- ignore_registers = { "_" },
+      -- update_register_on_cycle = false,
     },
     system_clipboard = {
       sync_with_ring = true,
@@ -31,8 +31,8 @@ return{
     picker = {
       select = {
         action = nil, -- nil to use default put action
-      }
-    }
+      },
+    },
   },
   keys = {
     {

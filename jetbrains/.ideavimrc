@@ -39,12 +39,16 @@ let g:qs_primary_color = '#ff0000'
 let g:qs_secondary_color = '#ffff00'
 let g:qs_disable_for_diffs = 0
 
+set NERDTree
 let g:NERDTreeMapCloseDir='h'
 let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapOpenVSplit='s'
+let g:NERDTreeMapOpenSplit='S'
 let g:NERDTreeMapJumpRoot='gg'
-let g:NERDTreeMapCloseChildren='x'
-let g:NERDTreeMapPreview='gl'
-set NERDTree
+let g:NERDTreeMapPreview='P'
+let g:NERDTreeMapToggleZoom='e'
+let g:NERDTreeMapNewDir='A'
+let g:NERDTreeMapNewFile='a'
 
 set surround
 nmap co <Plug>CSurround
