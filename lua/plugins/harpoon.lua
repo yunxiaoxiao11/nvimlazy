@@ -1,5 +1,6 @@
 return {
   "ThePrimeagen/harpoon",
+  event = "VeryLazy",
   branch = "harpoon2",
   opts = {
     menu = {
@@ -28,7 +29,7 @@ return {
       },
     }
 
-    for i = 1, 5 do
+    for i = 1, 9 do
       table.insert(keys, {
         "<leader>" .. i,
         function()

@@ -1,5 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
+  -- dependencies = { "crusj/bookmarks.nvim" },
   cmd = "Neotree",
   keys = {
     {
@@ -60,6 +61,13 @@ return {
       bind_to_cwd = false,
       follow_current_file = { enabled = true },
       use_libuv_file_watcher = true,
+      -- 添加书签入口
+      -- commands = {
+      --   -- 使用 Telescope 显示书签（bookmarks.nvim 的默认接口）
+      --   show_bookmarks = function(state)
+      --     require("telescope").extensions.bookmarks.bookmarks()
+      --   end,
+      -- },
     },
     window = {
       mappings = {
@@ -74,6 +82,7 @@ return {
         ["l"] = "open",
         ["h"] = "close_node",
         ["<space>"] = "none",
+        ["B"] = "show_bookmarks", -- 按 B 显示书签
         ["C"] = "none",
         ["X"] = "close_all_nodes",
         ["Y"] = {
