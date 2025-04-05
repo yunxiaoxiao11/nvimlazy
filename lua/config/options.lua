@@ -1,14 +1,16 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.list = false
-vim.opt.relativenumber = false
-vim.opt.wrap = true
-vim.opt.linebreak = true
+local opt = vim.opt
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.list = false
+opt.wrap = true
+opt.linebreak = true
 -- LazyVim.toggle.format(true)
+
+-- neovide相关设置
 if vim.g.neovide then
   vim.o.guifont = "FiraCode Nerd Font:h11" -- text below applies for VimScript
   vim.g.neovide_cursor_vfx_mode = "railgun"

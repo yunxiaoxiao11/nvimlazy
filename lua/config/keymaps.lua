@@ -1,19 +1,17 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 -- local lazymap = LazyVim.safe_keymap_set
-local unmap = vim.api.nvim_del_keymap
 local opt = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', { desc = "Toggle Spectre" })
-unmap("n", "<leader>/")
-vim.keymap.set("n", "<leader>/", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 -- NOP映射
 -- map('n', '<SPACE>', '<NOP>', opt)
 
 -- 行跳转映射
 map("n", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line-start", expr = true, silent = true })
 map("v", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line-start", expr = true, silent = true })
+map("o", "H", "v:count == 0 ? 'g^' : '^'", { desc = "Line-start", expr = true, silent = true })
 map("n", "L", "v:count == 0 ? 'g$' : '$'", { desc = "Line-end", expr = true, silent = true })
 map("v", "L", "v:count == 0 ? 'g$' : '$'", { desc = "Line-end", expr = true, silent = true })
+map("o", "L", "v:count == 0 ? 'g$' : '$'", { desc = "Line-end", expr = true, silent = true })
 
 map("n", "gj", "<c-o>", opt)
 map("n", "gk", "<c-i>", opt)
@@ -38,20 +36,12 @@ map("i", "<C-e>", "<C-o><C-e>", opt)
 map("i", "<C-y>", "<C-o><C-y>", opt)
 map("i", "<C-d>", "<C-o><C-d>", opt)
 map("i", "<C-u>", "<C-o><C-u>", opt)
+map("i", "zz", "<C-o>zz", opt)
 
--- 重新映射J
+-- 重新映射原有功能
 map("n", "<leader>j", "J", opt)
 map("n", "<leader>gi", "gi", { desc = "Go to Insert" })
 map("n", "U", "<C-R>", opt)
-
--- Buffer 操作
--- 取消 K 键的默认映射
-vim.keymap.set("n", "K", "<nop>", { desc = "Disable default K mapping" })
-map("n", "J", ":BufferLineCyclePrev<CR>", opt)
-map("n", "K", ":BufferLineCycleNext<CR>", opt)
-map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
-map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
-map("n", "<leader>bo", ":BufferLineCloseOthers<CR>", opt)
 
 -- Move Lines
 map("i", "<A-S-J>", "<esc><cmd>m .+1<cr>==<leader>gi", { desc = "Move down" })
@@ -68,24 +58,29 @@ function runFireFox()
   vim.fn.execute("cd -")
 end
 
--- 复制当前 buffer 所在的目录到剪贴板
--- function CopyBufferDir()
---   local dir = vim.fn.expand('%:p:h')
---   vim.fn.jobstart({ 'sh', '-c', 'echo -n "' .. dir .. '" | xclip -selection clipboard' })
---   vim.notify('Copied current buffer dir: ' .. dir, vim.log.levels.INFO)
--- end
---
--- -- 将该功能绑定到 <leader>cd 快捷键上
--- vim.keymap.set('n', '<leader>pwd', CopyBufferDir, { desc = 'Copy current buffer directory' })
+function CopyBufferDir()
+  local dir = vim.fn.expand("%:p:h")  -- 获取当前文件所在目录
+  vim.fn.setreg("+", dir)             -- 复制到系统剪贴板（需 +clipboard 支持）
+  vim.notify("Copied to clipboard: " .. dir, vim.log.levels.INFO)
+end
+
+vim.keymap.set("n", "<leader>cp", CopyBufferDir, { desc = "Copy buffer directory" })
 
 -- map
 -- local lazyterm = function()
 --     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, true, true), 'n', false)
 --     LazyVim.terminal(nil, { cwd = LazyVim.root() }) end
 -- LazyVim.safe_keymap_set('i', '<c-/>', lazyterm, { desc = 'Terminal (Root Dir)' })
+
+-- 鼠标功能映射
+-- 左键选中后复制到剪贴板（仅可视模式）
+map("v", "<LeftRelease>", function()
+  vim.cmd('normal! "+y') -- 复制到系统剪贴板
+  vim.cmd("normal! gv")  -- 重新选中文本（可选）
+end, opt)
 -- 设置鼠标右键在所有模式下粘贴系统剪贴板内容
-vim.api.nvim_set_keymap("n", "<RightMouse>", '"+p', { noremap = true, silent = true }) -- 普通模式
-vim.api.nvim_set_keymap("i", "<RightMouse>", '<C-o>"+p', { noremap = true, silent = true }) -- 插入模式
-vim.api.nvim_set_keymap("v", "<RightMouse>", '"+p', { noremap = true, silent = true }) -- 可视模式
-vim.api.nvim_set_keymap("c", "<RightMouse>", "<C-r>+", { noremap = true, silent = true }) -- 命令行模式
-vim.api.nvim_set_keymap("t", "<RightMouse>", '<C-\\><C-n>"+pi', { noremap = true, silent = true }) -- 终端模式
+map("n", "<RightMouse>", '"+p', opt)             -- 普通模式
+map("i", "<RightMouse>", '<C-o>"+p', opt)        -- 插入模式
+map("v", "<RightMouse>", '"+p', opt)             -- 可视模式
+map("c", "<RightMouse>", "<C-r>+", opt)          -- 命令行模式
+map("t", "<RightMouse>", '<C-\\><C-n>"+pi', opt) -- 终端模式

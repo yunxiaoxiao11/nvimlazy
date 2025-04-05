@@ -7,8 +7,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-vim.g.mapleader = ' ' -- 设置leader键
-vim.g.maplocalleader = '\\'
+vim.g.maplocalleader = "\\"
 
 require("lazy").setup({
   spec = {
