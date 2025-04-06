@@ -49,15 +49,6 @@ map("i", "<A-S-K>", "<esc><cmd>m .-2<cr>==<leader>gi", { desc = "Move up" })
 map("v", "<A-J>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<A-K>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
--- map('n', '<leader>r', ":lua runFireFox()<CR>", opt)
-
-function runFireFox()
-  vim.fn.execute("MarkdownPreview")
-  vim.fn.execute("cd ~/")
-  vim.fn.execute("!sh open_firefox.sh")
-  vim.fn.execute("cd -")
-end
-
 function CopyBufferDir()
   local dir = vim.fn.expand("%:p:h")  -- 获取当前文件所在目录
   vim.fn.setreg("+", dir)             -- 复制到系统剪贴板（需 +clipboard 支持）
@@ -65,12 +56,6 @@ function CopyBufferDir()
 end
 
 vim.keymap.set("n", "<leader>cp", CopyBufferDir, { desc = "Copy buffer directory" })
-
--- map
--- local lazyterm = function()
---     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, true, true), 'n', false)
---     LazyVim.terminal(nil, { cwd = LazyVim.root() }) end
--- LazyVim.safe_keymap_set('i', '<c-/>', lazyterm, { desc = 'Terminal (Root Dir)' })
 
 -- 鼠标功能映射
 -- 左键选中后复制到剪贴板（仅可视模式）
