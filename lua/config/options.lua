@@ -8,6 +8,7 @@ opt.expandtab = true
 opt.list = false
 opt.wrap = true
 opt.linebreak = true
+opt.autochdir = true
 -- LazyVim.toggle.format(true)
 
 -- neovide相关设置
