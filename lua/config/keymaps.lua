@@ -56,6 +56,7 @@ function CopyBufferDir()
 end
 
 vim.keymap.set("n", "<leader>cp", CopyBufferDir, { desc = "Copy buffer directory" })
+vim.keymap.set("n", "<leader>cd", ":lcd %:p:h<CR>", { desc = "Set window cwd to file dir" })
 
 -- 鼠标功能映射
 -- 左键选中后复制到剪贴板（仅可视模式）
