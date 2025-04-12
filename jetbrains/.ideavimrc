@@ -102,6 +102,18 @@ set switch
 nnoremap - :Switch<CR>
 nnoremap + :SwitchReverse<CR>
 
+" Harpoon
+nmap <leader>h <action>(HarpoonerToggleQuickMenu)
+nmap <leader>H <action>(HarpoonerToggleFile)
+nmap <Leader>1 <action>(HarpoonerOpenFile0)
+nmap <Leader>2 <action>(HarpoonerOpenFile1)
+nmap <Leader>3 <action>(HarpoonerOpenFile2)
+nmap <Leader>4 <action>(HarpoonerOpenFile3)
+nmap <Leader>5 <action>(HarpoonerOpenFile4)
+nmap <leader>] <action>(HarpoonerNextFileAction)
+nmap <leader>[ <action>(HarpoonerPreviousFileAction)
+nmap <leader>c <action>(HarpoonerClearMenu)
+
 " set peekaboo
 " inoremap <A-r> <C-r>
 
@@ -128,7 +140,7 @@ inoremap <A-u> <Backspace>
 inoremap <A-i> <Delete>
 inoremap <A-n> <C-o><C-e>
 inoremap <A-m> <C-o><C-y>
-inoremap zz <ESC>zza
+inoremap zz <C-o>zz
 
 inoremap <C-e> <C-o><C-e>
 inoremap <C-y> <C-o><C-y>
@@ -225,8 +237,8 @@ noremap <Leader>P "*p
 nnoremap yy "+yy
 
 " --------- IDE Leader ----------
-nnoremap <Leader>1 :action ToggleZenMode<CR>
-nnoremap <Leader>2 :action ToggleFullScreen<CR>
+nnoremap <Leader>m1 :action ToggleZenMode<CR>
+nnoremap <Leader>m2 :action ToggleFullScreen<CR>
 nnoremap <Leader>er :action ShowErrorDescription<CR>
 nnoremap <Leader>rf :action RenameFile<CR>
 nnoremap <Leader>bd :q<CR>
