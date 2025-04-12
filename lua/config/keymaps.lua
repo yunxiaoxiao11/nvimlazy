@@ -55,8 +55,8 @@ function CopyBufferDir()
   vim.notify("Copied to clipboard: " .. dir, vim.log.levels.INFO)
 end
 
-map("n", "<leader>cp", CopyBufferDir, { desc = "Copy buffer directory" })
-map("n", "<leader>cd", ":lcd %:p:h<CR>", { desc = "Set window cwd to file dir" })
+map("n", "\\cp", CopyBufferDir, { desc = "Copy buffer directory" })
+map("n", "\\cd", ":lcd %:p:h<CR>", { desc = "Set window cwd to file dir" })
 
 -- 鼠标功能映射
 -- 左键选中后复制到剪贴板（仅可视模式）
@@ -68,6 +68,7 @@ end, opt)
 -- 普通模式和插入模式下均生效
 map('n', '<C-v>', '"+p', { noremap = true, silent = true })     -- 普通模式粘贴
 map('i', '<C-v>', '<C-r>+', { noremap = true, silent = true })  -- 插入模式粘贴
+map('v', '<C-v>', '<C-r>+', { noremap = true, silent = true })  -- 插入模式粘贴
 
 -- 设置鼠标右键在所有模式下粘贴系统剪贴板内容
 map("n", "<RightMouse>", '"+p', opt)             -- 普通模式
