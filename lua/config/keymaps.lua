@@ -25,7 +25,7 @@ map("i", "<A-h>", "<Left>", opt)
 map("i", "<A-j>", "<Down>", opt)
 map("i", "<A-k>", "<Up>", opt)
 map("i", "<A-l>", "<Right>", opt)
-map("i", "<A-a>", "<Home>", opt)
+map("i", "<A-a>", "<C-o>^", opt)
 map("i", "<A-e>", "<End>", opt)
 map("i", "<A-u>", "<Backspace>", opt)
 map("i", "<A-i>", "<Delete>", opt)
@@ -56,7 +56,7 @@ function CopyBufferDir()
 end
 
 map("n", "\\cp", CopyBufferDir, { desc = "Copy buffer directory" })
-map("n", "\\cd", ":lcd %:p:h<CR>", { desc = "Set window cwd to file dir" })
+map("n", "\\cd", "<cmd>lcd %:p:h<CR>", { desc = "Set window cwd to file dir" })
 
 -- 鼠标功能映射
 -- 左键选中后复制到剪贴板（仅可视模式）

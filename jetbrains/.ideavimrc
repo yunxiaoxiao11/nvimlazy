@@ -40,6 +40,7 @@ let g:qs_secondary_color = '#ffff00'
 let g:qs_disable_for_diffs = 0
 
 set NERDTree
+"nmap <leader>e <action>(ActivateProjectToolWindow)
 let g:NERDTreeMapCloseDir='h'
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapOpenVSplit='s'
@@ -80,7 +81,7 @@ xmap ag <Plug>textobj-entire-a
 omap ig <Plug>textobj-entire-i
 xmap ig <Plug>textobj-entire-i
 
-set argtextobj
+set argtextobj " via cia yia ...
 
 set mini-ai
 
@@ -95,6 +96,7 @@ set textobj-indent
 
 set matchit
 let b:match_words = '<:>,<tag>:</tag>,if:else'
+let b:match_skip = 's:comment\|string\|javadoc'
 
 " Enable all patterns from multiple groups
 let g:switch_definitions = 'group:basic,group:java,group:rspec'
@@ -102,23 +104,36 @@ set switch
 nnoremap - :Switch<CR>
 nnoremap + :SwitchReverse<CR>
 
-" Harpoon
-nmap <leader>h <action>(HarpoonerToggleQuickMenu)
-nmap <leader>H <action>(HarpoonerToggleFile)
-nmap <Leader>1 <action>(HarpoonerOpenFile0)
-nmap <Leader>2 <action>(HarpoonerOpenFile1)
-nmap <Leader>3 <action>(HarpoonerOpenFile2)
-nmap <Leader>4 <action>(HarpoonerOpenFile3)
-nmap <Leader>5 <action>(HarpoonerOpenFile4)
-nmap <leader>] <action>(HarpoonerNextFileAction)
-nmap <leader>[ <action>(HarpoonerPreviousFileAction)
-nmap <leader>c <action>(HarpoonerClearMenu)
+" Harpooner
+"nmap <leader>h <action>(HarpoonerToggleQuickMenu)
+"nmap <leader>H <action>(HarpoonerToggleFile)
+"nmap <Leader>1 <action>(HarpoonerOpenFile0)
+"nmap <Leader>2 <action>(HarpoonerOpenFile1)
+"nmap <Leader>3 <action>(HarpoonerOpenFile2)
+"nmap <Leader>4 <action>(HarpoonerOpenFile3)
+"nmap <Leader>5 <action>(HarpoonerOpenFile4)
+"nmap <leader>] <action>(HarpoonerNextFileAction)
+"nmap <leader>[ <action>(HarpoonerPreviousFileAction)
+"nmap <leader>c <action>(HarpoonerClearMenu)
+
+" HarpoonIJ
+nmap <leader>h <action>(ShowHarpoon)
+nmap \1 <action>(SetHarpoon1)
+nmap \2 <action>(SetHarpoon2)
+nmap \3 <action>(SetHarpoon3)
+nmap \4 <action>(SetHarpoon4)
+nmap \5 <action>(SetHarpoon5)
+nmap <Leader>1 <action>(GotoHarpoon1)
+nmap <Leader>2 <action>(GotoHarpoon2)
+nmap <Leader>3 <action>(GotoHarpoon3)
+nmap <Leader>4 <action>(GotoHarpoon4)
+nmap <Leader>5 <action>(GotoHarpoon5)
 
 " set peekaboo
 " inoremap <A-r> <C-r>
 
 "set which-key
-"set notimeout
+set notimeout
 
 " set ReplaceWithRegister
 
@@ -134,7 +149,7 @@ inoremap <A-h> <Left>
 inoremap <A-j> <Down>
 inoremap <A-k> <Up>
 inoremap <A-l> <Right>
-inoremap <A-a> <Esc>^i
+inoremap <A-a> <C-o>^
 inoremap <A-e> <End>
 inoremap <A-u> <Backspace>
 inoremap <A-i> <Delete>
@@ -173,14 +188,14 @@ set ideajoin
 set idearefactormode=keep
 
 " run and debug
-nnoremap \\c :action CompileDirty<CR>
-nnoremap \\d :action Debug<CR>
-nnoremap \\s :action Stop<CR>
-nnoremap \\b :action ToggleLineBreakpoint<CR>
-nnoremap \\v :action ViewBreakpoints<CR>
-nnoremap \\e :action EditBreakpoint<CR>
-nnoremap \\m :action XDebugger.MuteBreakpoints<CR>
-nnoremap \\r :action JRebel Debug<CR>
+nnoremap \c :action CompileDirty<CR>
+nnoremap \d :action Debug<CR>
+nnoremap \s :action Stop<CR>
+nnoremap \b :action ToggleLineBreakpoint<CR>
+nnoremap \v :action ViewBreakpoints<CR>
+nnoremap \e :action EditBreakpoint<CR>
+nnoremap \m :action XDebugger.MuteBreakpoints<CR>
+nnoremap \r :action JRebel Debug<CR>
 
 " bookmark
 nnoremap <Leader>bz :action Bookmarks<CR>
@@ -254,7 +269,7 @@ nnoremap <Leader>m :action MavenRunHelperCleanInstall<CR>
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
-nnoremap gu :action ShowUsages<CR>
+nnoremap gr :action ShowUsages<CR>
 nnoremap gh :action QuickJavaDoc<CR>
 nnoremap gn :action ShowHoverInfo<CR>
 nnoremap gl :action TypeHierarchy<CR>
