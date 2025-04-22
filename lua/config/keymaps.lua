@@ -66,9 +66,12 @@ map("v", "<LeftRelease>", function()
 end, opt)
 
 -- 普通模式和插入模式下均生效
-map('n', '<C-v>', '"+p', { noremap = true, silent = true })     -- 普通模式粘贴
-map('i', '<C-v>', '<C-r>+', { noremap = true, silent = true })  -- 插入模式粘贴
-map('v', '<C-v>', '<C-r>+', { noremap = true, silent = true })  -- 插入模式粘贴
+map('n', '<C-v>', '"+p', { noremap = true, silent = true })    -- 普通模式粘贴（系统剪贴板）
+map('i', '<C-v>', '<C-r>+', { noremap = true, silent = true }) -- 插入模式粘贴（系统剪贴板）
+map('v', '<C-v>', '"+p', { noremap = true, silent = true })    -- 可视模式替换为剪贴板内容
+map('x', '<C-v>', '"+p', { noremap = true, silent = true })    -- 可选：防止覆盖默认的块选择粘贴行为
+-- 修复 Alt 键转义问题
+map('c', '<M-v>', '<C-v>', { noremap = true })  -- 将 Alt+v 映射为 Ctrl+v
 
 -- 设置鼠标右键在所有模式下粘贴系统剪贴板内容
 map("n", "<RightMouse>", '"+p', opt)             -- 普通模式
