@@ -14,6 +14,7 @@ nnoremap <Leader>ic :set ic!<CR>
 nnoremap <ESC> <ESC>:noh<CR>
 vnoremap <ESC> <ESC>:noh<CR>
 nnoremap <Leader>/ /<C-R>"<CR>
+nnoremap ? :action Find<CR>
 
 " other
 set showmode
@@ -24,8 +25,9 @@ set nu
 set rnu "relativenumber
 nnoremap <Leader>nu :set nu!<CR>
 nnoremap <Leader>rnu :set rnu!<CR>
-vnoremap _ :b#<CR>
-nnoremap _ :b#<CR>
+vnoremap <A--> :b#<CR>
+nnoremap <A--> :b#<CR>
+inoremap <A--> <C-o>:b#<CR>
 
 " —————— plugins & remap plugins shortcuts start ——————
 "set easymotion
@@ -62,7 +64,6 @@ nmap <A-S-j> <Plug>NextWholeOccurrence
 xmap <A-S-j> <Plug>NextWholeOccurrence
 nmap <A-S-n> <Plug>SkipOccurrence
 xmap <A-S-n> <Plug>SkipOccurrence
-nmap <A-S-k> <Plug>RemoveOccurrence
 xmap <A-S-k> <Plug>RemoveOccurrence
 nmap <A-C-j> <Plug>AllWholeOccurrences
 xmap <A-C-j> <Plug>AllWholeOccurrences
@@ -101,20 +102,8 @@ let b:match_skip = 's:comment\|string\|javadoc'
 " Enable all patterns from multiple groups
 let g:switch_definitions = 'group:basic,group:java,group:rspec'
 set switch
-nnoremap - :Switch<CR>
-nnoremap + :SwitchReverse<CR>
-
-" Harpooner
-"nmap <leader>h <action>(HarpoonerToggleQuickMenu)
-"nmap <leader>H <action>(HarpoonerToggleFile)
-"nmap <Leader>1 <action>(HarpoonerOpenFile0)
-"nmap <Leader>2 <action>(HarpoonerOpenFile1)
-"nmap <Leader>3 <action>(HarpoonerOpenFile2)
-"nmap <Leader>4 <action>(HarpoonerOpenFile3)
-"nmap <Leader>5 <action>(HarpoonerOpenFile4)
-"nmap <leader>] <action>(HarpoonerNextFileAction)
-"nmap <leader>[ <action>(HarpoonerPreviousFileAction)
-"nmap <leader>c <action>(HarpoonerClearMenu)
+nnoremap [ :Switch<CR>
+nnoremap ] :SwitchReverse<CR>
 
 " HarpoonIJ
 nmap <leader>h <action>(ShowHarpoon)
@@ -133,7 +122,7 @@ nmap <Leader>5 <action>(GotoHarpoon5)
 " inoremap <A-r> <C-r>
 
 "set which-key
-set notimeout
+"set notimeout
 
 " set ReplaceWithRegister
 
@@ -142,7 +131,7 @@ set notimeout
 
 " edit ideavimrc
 nnoremap <Leader>ve :e ~/.ideavimrc<CR>
-nnoremap <Leader>vs :source ~/.ideavimrc<CR>:nohlsearch<CR>
+nnoremap <Leader>vs :action IdeaVim.ReloadVimRc.reload<CR>:noh<CR>
 
 " insert mode shortcut
 inoremap <A-h> <Left>
@@ -165,13 +154,13 @@ inoremap <C-f> <C-o><C-f>
 inoremap <C-b> <C-o><C-b>
 
 " line move keymaps
-inoremap <A-S-j> <Esc>:move+1<CR>i
-inoremap <A-S-k> <Esc>:move-2<CR>i
+inoremap <A-S-j> <Esc>:move+1<CR>gi
+inoremap <A-S-k> <Esc>:move-2<CR>gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-nnoremap <A-j> <Esc>:move+1<CR>
-nnoremap <A-k> <Esc>:move-2<CR>
+nnoremap <A-j> m':move+1<CR>``
+nnoremap <A-k> m':move-2<CR>``
 nnoremap <C-S-j> :action MoveStatementDown<CR>
 nnoremap <C-S-k> :action MoveStatementUp<CR>
 vnoremap <C-S-j> :action MoveStatementDown<CR>
@@ -189,13 +178,13 @@ set idearefactormode=keep
 
 " run and debug
 nnoremap \c :action CompileDirty<CR>
+nnoremap \r :action Run<CR>
 nnoremap \d :action Debug<CR>
 nnoremap \s :action Stop<CR>
 nnoremap \b :action ToggleLineBreakpoint<CR>
 nnoremap \v :action ViewBreakpoints<CR>
 nnoremap \e :action EditBreakpoint<CR>
 nnoremap \m :action XDebugger.MuteBreakpoints<CR>
-nnoremap \r :action JRebel Debug<CR>
 
 " bookmark
 nnoremap <Leader>bz :action Bookmarks<CR>
@@ -216,15 +205,15 @@ nnoremap J gT
 vnoremap J gT
 nnoremap K gt
 vnoremap K gt
-nnoremap [b gT
-vnoremap [b gT
-nnoremap ]b gt
-vnoremap ]b gt
 nnoremap zh 20zh
 nnoremap zl 20zl
 nnoremap <Leader>j J
 nnoremap U :redo<CR>
 vnoremap U :redo<CR>
+" 新增：动态切换 J 的行为（标签切换 vs 合并行）
+let g:use_native_j = 0
+nnoremap <F12> :let g:use_native_j = !g:use_native_j<CR>
+nnoremap <expr> J g:use_native_j ? 'J' : 'gT'
 
 inoremap jj <ESC>
 inoremap JJ <ESC>
