@@ -145,6 +145,8 @@ inoremap <A-i> <Delete>
 inoremap <A-n> <C-o><C-e>
 inoremap <A-m> <C-o><C-y>
 inoremap zz <C-o>zz
+inoremap zh <C-o>20zh
+inoremap zl <C-o>20zl
 
 inoremap <C-e> <C-o><C-e>
 inoremap <C-y> <C-o><C-y>
@@ -232,6 +234,7 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 nnoremap <Leader>cc :action Unsplit<CR>
 nnoremap <Leader>ca :action UnsplitAll<CR>
+nnoremap <A-O> :action MoveEditorToOppositeTabGroup<CR>
 
 " copy and paste
 set clipboard+=unnamedplus

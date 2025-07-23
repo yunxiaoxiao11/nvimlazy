@@ -11,5 +11,6 @@ return {
   keys = {
     { "\\<tab>", function() require("bookmarks").toggle_bookmarks() end, desc = "Toggle bookmark", },
     { "\\ba", function() require'bookmarks'.add_bookmarks(true) end, desc = "add global bookmarks", },
+    { "dd", function() require'bookmarks.list'.delete_on_virt() end, desc = "add global bookmarks", },
   },
 }
