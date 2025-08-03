@@ -9,21 +9,22 @@ set hls "hlsearch
 set is "incsearch
 set scs "smartcase
 set ic "ignorecase
-nnoremap <Leader>sc :set scs!<CR>
-nnoremap <Leader>ic :set ic!<CR>
+" nnoremap <Leader>sc :set scs!<CR>
+" nnoremap <Leader>ic :set ic!<CR>
 nnoremap <ESC> <ESC>:noh<CR>
 vnoremap <ESC> <ESC>:noh<CR>
 nnoremap <Leader>/ /<C-R>"<CR>
 nnoremap ? :action Find<CR>
 
 " other
+set startofline=on
 set showmode
 set laststatus=2
 set scrolloff=5
 set showcmd
 set nu
 set rnu "relativenumber
-nnoremap <Leader>nu :set nu!<CR>
+" nnoremap <Leader>nu :set nu!<CR>
 nnoremap <Leader>rnu :set rnu!<CR>
 vnoremap <A--> :b#<CR>
 nnoremap <A--> :b#<CR>
@@ -68,6 +69,14 @@ xmap <A-S-k> <Plug>RemoveOccurrence
 nmap <A-C-j> <Plug>AllWholeOccurrences
 xmap <A-C-j> <Plug>AllWholeOccurrences
 xmap <C-j> <Plug>AllOccurrences
+
+set multicursor
+map <A-/> <Plug>(multicursor-mc/)
+map <A-a> <Plug>(multicursor-mcc)
+map <A-f> <Plug>(multicursor-mcf)
+map <A-d> <Plug>(multicursor-mcd)
+map <tab> <Plug>(multicursor-mcr)
+map <A-w> <Plug>(multicursor-mcw)
 
 set commentary
 "nnoremap gcc :action CommentByLineComment<CR>
@@ -128,7 +137,6 @@ nmap <Leader>5 <action>(GotoHarpoon5)
 
 "set keep-english-in-normal-and-restore-in-insert
 " —————— plugins & remap plugins shortcuts end ——————
-
 " edit ideavimrc
 nnoremap <Leader>ve :e ~/.ideavimrc<CR>
 nnoremap <Leader>vs :action IdeaVim.ReloadVimRc.reload<CR>:noh<CR>
@@ -177,6 +185,7 @@ inoremap <A-.> :action MethodUp<CR>
 " idea specific settings
 set ideajoin
 set idearefactormode=keep
+set ideamarks
 
 " run and debug
 nnoremap \c :action CompileDirty<CR>
@@ -203,26 +212,25 @@ nnoremap == :action ReformatCode<CR>
 " 其他模式快速移动
 map H ^
 map L $
-nnoremap J gT
-vnoremap J gT
-nnoremap K gt
-vnoremap K gt
+nnoremap J :action PreviousTab<CR>
+vnoremap J :action PreviousTab<CR>
+nnoremap K :action NextTab<CR>
+vnoremap K :action NextTab<CR>
+nnoremap <Leader>j J
 nnoremap zh 20zh
 nnoremap zl 20zl
-nnoremap <Leader>j J
 nnoremap U :redo<CR>
 vnoremap U :redo<CR>
 " 新增：动态切换 J 的行为（标签切换 vs 合并行）
 let g:use_native_j = 0
-nnoremap <F12> :let g:use_native_j = !g:use_native_j<CR>
-nnoremap <expr> J g:use_native_j ? 'J' : 'gT'
+nnoremap <F12> :let g:use_native_j = !g:use_native_j<CR>:echo "Native J: " . (g:use_native_j ? "ON" : "OFF")<CR>
+nnoremap <expr> J g:use_native_j ? 'J' : ':action PreviousTab<CR>'
 
 inoremap jj <ESC>
 inoremap JJ <ESC>
-nnoremap <Leader>n :normal<CR>
-"nnoremap <Leader>i H
-"nnoremap <Leader>j M
-"nnoremap <Leader>n L
+nnoremap <tab>i H
+nnoremap <tab>j M
+nnoremap <tab>n L
 
 " window operation
 set so=3
