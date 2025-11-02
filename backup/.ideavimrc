@@ -1,0 +1,389 @@
+" set Leader key
+nnoremap <SPACE> <Nop>
+vnoremap <SPACE> <Nop>
+let mapleader=" "
+set timeoutlen=1500
+
+" search
+set hls "hlsearch
+set is "incsearch
+set scs "smartcase
+set ic "ignorecase
+" nnoremap <Leader>sc :set scs!<CR>
+" nnoremap <Leader>ic :set ic!<CR>
+nnoremap <ESC> <ESC>:noh<CR>
+vnoremap <ESC> <ESC>:noh<CR>
+nnoremap <Leader>/ /<C-R>"<CR>
+nnoremap ? :action Find<CR>
+
+" other
+set nosol " startofline
+set showmode
+set laststatus=2
+set scrolloff=5
+set showcmd
+set nu
+set rnu "relativenumber
+" nnoremap <Leader>nu :set nu!<CR>
+nnoremap <Leader>rnu :set rnu!<CR>
+vnoremap <A--> :b#<CR>
+nnoremap <A--> :b#<CR>
+inoremap <A--> <C-o>:b#<CR>
+
+" —————— plugins & remap plugins shortcuts start ——————
+"set easymotion
+"map <Leader>f <Plug>(easymotion-s)
+"nnoremap <Leader>; :action AceLineStartsAction<CR>
+
+map s <Action>(flash.search)
+nmap S <Action>(flash.treesitter)
+xmap S <Action>(flash.treesitter)
+omap r <Action>(flash.remote)
+
+set quickscope
+let g:qs_primary_color = '#ff0000'
+let g:qs_secondary_color = '#ffff00'
+let g:qs_disable_for_diffs = 0
+
+set NERDTree
+"nmap <leader>e <action>(ActivateProjectToolWindow)
+let g:NERDTreeMapCloseDir='h'
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapOpenVSplit='s'
+let g:NERDTreeMapOpenSplit='S'
+let g:NERDTreeMapJumpRoot='gg'
+let g:NERDTreeMapPreview='P'
+let g:NERDTreeMapToggleZoom='e'
+let g:NERDTreeMapNewDir='A'
+let g:NERDTreeMapNewFile='a'
+
+set surround
+nmap co <Plug>CSurround
+nmap do <Plug>DSurround
+nmap yo <Plug>YSurround
+vmap O <Plug>VSurround
+
+set multiple-cursors
+nmap <A-S-j> <Plug>NextWholeOccurrence
+xmap <A-S-j> <Plug>NextWholeOccurrence
+nmap <A-S-n> <Plug>SkipOccurrence
+xmap <A-S-n> <Plug>SkipOccurrence
+xmap <A-S-k> <Plug>RemoveOccurrence
+nmap <A-C-j> <Plug>AllWholeOccurrences
+xmap <A-C-j> <Plug>AllWholeOccurrences
+xmap <C-j> <Plug>AllOccurrences
+
+set multicursor
+map <A-/> <Plug>(multicursor-mc/)
+map <A-a> <Plug>(multicursor-mcc)
+map <A-f> <Plug>(multicursor-mcf)
+map <A-d> <Plug>(multicursor-mcd)
+map <tab> <Plug>(multicursor-mcr)
+xmap <A-e> <Plug>(multicursor-mce)
+
+set commentary
+"nnoremap gcc :action CommentByLineComment<CR>
+"vnoremap gcc :action CommentByLineComment<CR>
+
+set exchange
+
+let g:textobj_entire_no_default_key_mappings = 1
+set textobj-entire
+omap ag <Plug>textobj-entire-a
+xmap ag <Plug>textobj-entire-a
+omap ig <Plug>textobj-entire-i
+xmap ig <Plug>textobj-entire-i
+
+set anyobject
+let g:anyobject_included = "anyArgument,anyFunction,anyClass,anyLoop,anyConditional,anyItem,anyQuote,anyBracket,anySubword,anyDocument,anyBlockComment,anyIndentBlock"
+let g:anyobject_map_anybracket = "b"
+let g:anyobject_map_anyconditional = "d"
+let g:anyobject_map_anycdocument = "g"
+" Use '<' instead of default '[' for jumping to the previous text object
+let g:anyobject_map_jump_prev = "<" 
+" Use '>' instead of default ']' for jumping to the next text object
+let g:anyobject_map_jump_next = ">" 
+
+let g:highlightedyank_highlight_color = "rgba(235, 94, 40, 200)"
+set highlightedyank
+
+set vim-paragraph-motion
+
+set textobj-indent
+
+set matchit
+let b:match_words = '<:>,<tag>:</tag>,if:else'
+let b:match_skip = 's:comment\|string\|javadoc'
+
+set dial
+let g:dial_include = "basic,numbers,dates,java,python:async,markdown:task_item"
+
+" Custom transformations
+let g:dial_custom_definitions = [
+    ['normalizedCaseWords', ['one', 'two', 'three']],
+    ['words', ['GetMapping', 'PostMapping']],
+    ['normalizedCasePattern', ['alpha', 'beta', 'gamma']],
+    ['pattern', ['start', 'middle', 'end']]
+]
+" Enable all patterns from multiple groups
+nnoremap [ :DialIncrement<cr>
+nnoremap ] :DialDecrement<cr>
+
+" let g:switch_definitions = 'group:basic,group:java,group:rspec'
+" set switch
+" nnoremap [ :Switch<CR>
+" nnoremap ] :SwitchReverse<CR>
+
+" HarpoonIJ
+nmap <leader>h <action>(ShowHarpoon)
+nmap \1 <action>(SetHarpoon1)
+nmap \2 <action>(SetHarpoon2)
+nmap \3 <action>(SetHarpoon3)
+nmap \4 <action>(SetHarpoon4)
+nmap \5 <action>(SetHarpoon5)
+nmap <Leader>1 <action>(GotoHarpoon1)
+nmap <Leader>2 <action>(GotoHarpoon2)
+nmap <Leader>3 <action>(GotoHarpoon3)
+nmap <Leader>4 <action>(GotoHarpoon4)
+nmap <Leader>5 <action>(GotoHarpoon5)
+
+set peekaboo
+inoremap <A-r> <C-r>
+
+" Wrap to Column
+nmap gq :action com.andrewbrookins.idea.wrap.WrapAction<CR>
+
+"set which-key
+"set notimeout
+
+88" set ReplaceWithRegister
+
+"set keep-english-in-normal-and-restore-in-insert
+" —————— plugins & remap plugins shortcuts end ——————
+" edit ideavimrc
+nnoremap <Leader>ve :e ~/.ideavimrc<CR>
+nnoremap <Leader>vs :action IdeaVim.ReloadVimRc.reload<CR>:noh<CR>
+
+" insert mode shortcut
+inoremap <A-h> <Left>
+inoremap <A-j> <Down>
+inoremap <A-k> <Up>
+inoremap <A-l> <Right>
+inoremap <A-a> <C-o>^
+inoremap <A-e> <End>
+inoremap <A-u> <Backspace>
+inoremap <A-i> <Delete>
+inoremap <A-n> <C-o><C-e>
+inoremap <A-m> <C-o><C-y>
+inoremap zz <C-o>zz
+inoremap zh <C-o>20zh
+inoremap zl <C-o>20zl
+
+inoremap <C-e> <C-o><C-e>
+inoremap <C-y> <C-o><C-y>
+inoremap <C-d> <C-o><C-d>
+inoremap <C-u> <C-o><C-u>
+inoremap <C-f> <C-o><C-f>
+inoremap <C-b> <C-o><C-b>
+
+" line move keymaps
+inoremap <A-S-j> <Esc>:move+1<CR>gi
+inoremap <A-S-k> <Esc>:move-2<CR>gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+nnoremap <A-j> m':move+1<CR>``
+nnoremap <A-k> m':move-2<CR>``
+nnoremap <C-S-j> :action MoveStatementDown<CR>
+nnoremap <C-S-k> :action MoveStatementUp<CR>
+vnoremap <C-S-j> :action MoveStatementDown<CR>
+vnoremap <C-S-k> :action MoveStatementUp<CR>
+
+" jump map
+nnoremap <A-,> :action MethodDown<CR>
+nnoremap <A-.> :action MethodUp<CR>
+inoremap <A-,> :action MethodDown<CR>
+inoremap <A-.> :action MethodUp<CR>
+
+" idea specific settings
+set ideajoin
+set idearefactormode=keep
+set ideamarks
+
+" run and debug
+nnoremap \c :action CompileDirty<CR>
+nnoremap \r :action Run<CR>
+nnoremap \d :action Debug<CR>
+nnoremap \s :action Stop<CR>
+nnoremap \b :action ToggleLineBreakpoint<CR>
+nnoremap \v :action ViewBreakpoints<CR>
+nnoremap \e :action EditBreakpoint<CR>
+nnoremap \m :action XDebugger.MuteBreakpoints<CR>
+nnoremap \h :action XDebugger.Hotswap.Modified.Files<CR>
+
+" bookmark
+nnoremap <Leader>bz :action Bookmarks<CR>
+nnoremap <Leader>bs :action ShowBookmarks<CR>
+nnoremap <Leader>be :action EditBookmark<CR>
+nnoremap <Leader>re :action MemoryView.ShowInstances<CR>
+
+" code actions
+nnoremap R :action RenameElement<CR>
+vnoremap = :action ReformatCode<CR>
+nnoremap == :action ReformatCode<CR>
+"nnoremap -- :action OptimizeImports<CR>
+
+" 其他模式快速移动
+map H ^
+map L $
+nnoremap J :action PreviousTab<CR>
+vnoremap J :action PreviousTab<CR>
+nnoremap K :action NextTab<CR>
+vnoremap K :action NextTab<CR>
+nnoremap <Leader>j J
+nnoremap zh 20zh
+nnoremap zl 20zl
+nnoremap U :redo<CR>
+vnoremap U :redo<CR>
+" 新增：动态切换 J 的行为（标签切换 vs 合并行）
+let g:use_native_j = 0
+nnoremap <F12> :let g:use_native_j = !g:use_native_j<CR>:echo "Native J: " . (g:use_native_j ? "ON" : "OFF")<CR>
+nnoremap <expr> J g:use_native_j ? 'J' : ':action PreviousTab<CR>'
+
+inoremap jj <ESC>
+inoremap JJ <ESC>
+nnoremap <tab>i H
+nnoremap <tab>j M
+nnoremap <tab>n L
+
+" window operation
+set so=3
+nnoremap <C--> :action MoveTabDown<CR>
+nnoremap <C-\> :action MoveTabRight<CR>
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+nnoremap <Leader>cc :action Unsplit<CR>
+nnoremap <Leader>ca :action UnsplitAll<CR>
+nnoremap <A-O> :action MoveEditorToOppositeTabGroup<CR>
+
+" copy and paste
+set clipboard+=unnamedplus
+noremap <Leader>y "*y
+noremap <Leader>p "0p
+noremap <Leader>P "*p
+nnoremap yy "+yy
+
+" --------- IDE Leader ----------
+nnoremap <Leader>m1 :action ToggleZenMode<CR>
+nnoremap <Leader>m2 :action ToggleFullScreen<CR>
+nnoremap <Leader>er :action ShowErrorDescription<CR>
+nnoremap <Leader>rf :action RenameFile<CR>
+nnoremap <Leader>bd :q<CR>
+nnoremap <Leader>bo :action CloseAllEditorsButActive<CR>
+nnoremap <Leader>bh :action CloseAllToTheLeft<CR>
+nnoremap <Leader>bl :action CloseAllToTheRight<CR>
+nnoremap <Leader>d :action EditorPopupMenu.Run<CR>
+nnoremap <Leader>gi gi
+nnoremap <Leader>o :action OpenInBrowser<CR>
+nnoremap <Leader>m :action MavenRunHelperCleanInstall<CR>
+nnoremap <Leader>wp :action EditorToggleUseSoftWraps<CR>
+
+" ---------- IDE g ----------
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gr :action ShowUsages<CR>
+nnoremap gh :action QuickJavaDoc<CR>
+nnoremap gn :action ShowHoverInfo<CR>
+nnoremap gl :action TypeHierarchy<CR>
+nnoremap gj :action Back<CR>
+nnoremap gk :action Forward<CR>
+nnoremap gf :action GotoFile<CR>
+nnoremap gm :action GotoSymbol<CR>
+
+" ---------- IDE t ----------
+nnoremap ta :action Annotate<CR>
+nnoremap tf :action FileStructurePopup<CR>
+nnoremap ti :action QuickActions<CR>
+nnoremap to :action RecentProjectListGroup<CR>
+nnoremap tp :action ShowPopupMenu<CR>
+
+" Which key config
+let g:WhichKeyDesc_Esc_Nohlsearch = "<Esc> Esc_Nohlsearch"
+let g:WhichKeyDesc_SearchWithClip = "<Leader>/ SearchWithClip"
+
+let g:WhichKeyDesc_EditVimConfig = "<Leader>ve EditVimConfig"
+let g:WhichKeyDesc_SaveVimConfig = "<Leader>vw SaveVimConfig"
+let g:WhichKeyDesc_ReloadVimConfig = "<Leader>vs ReloadVimConfig"
+
+let g:WhichKeyDesc_InsertLeft = "<A-h> InsertLeft"
+let g:WhichKeyDesc_InsertRight = "<A-l> InsertRight"
+let g:WhichKeyDesc_InsertUp = "<A-k> InsertUp"
+let g:WhichKeyDesc_InsertDown = "<A-j> InsertDown"
+let g:WhichKeyDesc_InsertHome = "<A-a> InsertHome"
+let g:WhichKeyDesc_InsertEnd = "<A-e> InsertEnd"
+let g:WhichKeyDesc_InsertDelete = "<A-i> InsertDelete"
+let g:WhichKeyDesc_InsertBackspace = "<A-u> InsertBackspace"
+
+let g:WhichKeyDesc_RunAsDebug = ",d RunAsDebug"
+let g:WhichKeyDesc_Run = ",r Run"
+let g:WhichKeyDesc_CompileDirty = ",c CompileDirty"
+let g:WhichKeyDesc_ToggleLineBreakpoint = ",b ToggleLineBreakpoint"
+let g:WhichKeyDesc_ViewBreakpoints = ",v ViewBreakpoints"
+let g:WhichKeyDesc_EditBreakpoint = ",e EditBreakpoint"
+let g:WhichKeyDesc_Stop = ",s Stop"
+
+let g:WhichKeyDesc_Redo = "U Redo"
+let g:WhichKeyDesc_NormalMode = "<Leader>n NormalMode"
+
+let g:WhichKeyDesc_SplitHorizon = "<C-减号> SplitHorizon"
+let g:WhichKeyDesc_SplitVertical = "<C-反斜杠> SplitVertical"
+let g:WhichKeyDesc_Move2LeftWindow = "<C-h> Move2LeftWindow"
+let g:WhichKeyDesc_Move2RightWindow = "<C-l> Move2RightWindow"
+let g:WhichKeyDesc_Move2BeloWindow = "<C-j> Move2BeloWindow"
+let g:WhichKeyDesc_Move2AboveWindow = "<C-k> Move2AboveWindow"
+
+let g:WhichKeyDesc_Copied2SysClipBoard = "<Leader>y Copied2SysClipBoard"
+let g:WhichKeyDesc_PasteFrom0Reg = "<Leader>p PasteFrom0Reg"
+let g:WhichKeyDesc_PasteFromSysClipBoard = "<Leader>P PasteFromSysClipBoard"
+
+let g:WhichKeyDesc_CopiedLine2SysClipBoard = "yy CopiedLine2SysClipBoard"
+
+" plugins
+let g:WhichKeyDesc_EasyMotion = "<Leader>f EasyMotion"
+
+let g:WhichKeyDesc_NextWholeOccurrence = "<A-S-j> NextWholeOccurrence"
+let g:WhichKeyDesc_SkipOccurrence = "<A-S-n> SkipOccurrence"
+let g:WhichKeyDesc_RemoveOccurrence = "<A-S-k> RemoveOccurrence"
+let g:WhichKeyDesc_AllWholeOccurrences = "<C-A-j> AllWholeOccurrences"
+" g
+let g:WhichKeyDesc_GotoImplementation = "gi GotoImplementation"
+let g:WhichKeyDesc_GotoSuperMethod = "gs GotoSuperMethod"
+let g:WhichKeyDesc_ShowUsages = "gu ShowUsages"
+let g:WhichKeyDesc_GotoFile = "gf GotoFile"
+let g:WhichKeyDesc_Back = "gj Back"
+let g:WhichKeyDesc_Forward = "gk Forward"
+let g:WhichKeyDesc_QuickJavaDoc = "gh QuickJavaDoc"
+let g:WhichKeyDesc_GotoSymbol = "gm GotoSymbol"
+let g:WhichKeyDesc_CommentByLineComment = "gcc CommentByLineComment"
+" t
+let g:WhichKeyDesc_Annotate = "ta Annotate"
+let g:WhichKeyDesc_FileStructurePopup = "tf FileStructurePopup"
+let g:WhichKeyDesc_QuickActions = "ti QuickActions"
+let g:WhichKeyDesc_RecentProjectListGroup = "to RecentProjectListGroup"
+let g:WhichKeyDesc_ShowPopupMenu = "tp ShowPopupMenu"
+
+let g:WhichKeyDesc_ShowErrorDescription = "<Leader>er ShowErrorDescription"
+
+let g:WhichKeyDesc_ToggleZenMode = "<Leader>1 ToggleZenMode"
+let g:WhichKeyDesc_ToggleFullScreen = "<Leader>2 ToggleFullScreen"
+
+let g:WhichKeyDesc_ShowErrorDescription = "<Leader>er ShowErrorDescription"
+let g:WhichKeyDesc_Refactorings.QuickListPopupAction = "<Leader>r1 Refactorings.QuickListPopupAction"
+let g:WhichKeyDesc_RenameFile = "<Leader>rf RenameFile"
+let g:WhichKeyDesc_Quit = "<Leader>qq Quit"
+let g:WhichKeyDesc_CloseAllEditorsButActive = "<Leader>qa CloseAllEditorsButActive"
+let g:WhichKeyDesc_CloseAllToTheLeft = "<Leader>qh CloseAllToTheLeft"
+let g:WhichKeyDesc_CloseAllToTheRight = "<Leader>ql CloseAllToTheRight"
