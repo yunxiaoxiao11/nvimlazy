@@ -14,7 +14,7 @@ set ic "ignorecase
 nnoremap <ESC> <ESC>:noh<CR>
 vnoremap <ESC> <ESC>:noh<CR>
 nnoremap <Leader>/ /<C-R>"<CR>
-nnoremap ? :action Find<CR>
+nnoremap <A-C-/> :action Find<CR>
 
 " other
 set nosol " startofline
@@ -36,11 +36,12 @@ inoremap <A--> <C-o>:b#<CR>
 "nnoremap <Leader>; :action AceLineStartsAction<CR>
 
 map s <Action>(flash.search)
+omap r <Action>(flash.remote)
 nmap S <Action>(flash.treesitter)
 xmap S <Action>(flash.treesitter)
-omap r <Action>(flash.remote)
 
 set quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:qs_primary_color = '#ff0000'
 let g:qs_secondary_color = '#ffff00'
 let g:qs_disable_for_diffs = 0
@@ -87,52 +88,35 @@ set commentary
 
 set exchange
 
-let g:textobj_entire_no_default_key_mappings = 1
-set textobj-entire
-omap ag <Plug>textobj-entire-a
-xmap ag <Plug>textobj-entire-a
-omap ig <Plug>textobj-entire-i
-xmap ig <Plug>textobj-entire-i
-
 set anyobject
-let g:anyobject_included = "anyArgument,anyFunction,anyClass,anyLoop,anyConditional,anyItem,anyQuote,anyBracket,anySubword,anyDocument,anyBlockComment,anyIndentBlock"
-let g:anyobject_map_anybracket = "b"
-let g:anyobject_map_anyconditional = "d"
-let g:anyobject_map_anycdocument = "g"
-" Use '<' instead of default '[' for jumping to the previous text object
-let g:anyobject_map_jump_prev = "<" 
-" Use '>' instead of default ']' for jumping to the next text object
-let g:anyobject_map_jump_next = ">" 
+let g:anyobject_included = 'anyArgument,anyFunction,anyClass,anyLoop,anyConditional,anyItem,anyQuote,anyBracket,anySubword,anyDocument,anyBlockComment,anyIndentBlock'
+let g:anyobject_map_anybracket = 'b'
+let g:anyobject_map_anyconditional = 'd'
+let g:anyobject_map_anydocument = 'g'
+let g:anyobject_map_jump_prev = '<'
+let g:anyobject_map_jump_next = '>'
 
-let g:highlightedyank_highlight_color = "rgba(235, 94, 40, 200)"
+let g:highlightedyank_highlight_color = 'rgba(235, 94, 40, 200)'
 set highlightedyank
 
 set vim-paragraph-motion
-
-set textobj-indent
 
 set matchit
 let b:match_words = '<:>,<tag>:</tag>,if:else'
 let b:match_skip = 's:comment\|string\|javadoc'
 
 set dial
-let g:dial_include = "basic,numbers,dates,java,python:async,markdown:task_item"
+let g:dial_include = 'basic,numbers,dates,java,python:async,markdown:task_item'
 
 " Custom transformations
 let g:dial_custom_definitions = [
-    ['normalizedCaseWords', ['one', 'two', 'three']],
+    ['normalizedCaseWords', ['debug', 'info', 'warning', 'error']],
     ['words', ['GetMapping', 'PostMapping']],
     ['normalizedCasePattern', ['alpha', 'beta', 'gamma']],
     ['pattern', ['start', 'middle', 'end']]
 ]
-" Enable all patterns from multiple groups
 nnoremap [ :DialIncrement<cr>
 nnoremap ] :DialDecrement<cr>
-
-" let g:switch_definitions = 'group:basic,group:java,group:rspec'
-" set switch
-" nnoremap [ :Switch<CR>
-" nnoremap ] :SwitchReverse<CR>
 
 " HarpoonIJ
 nmap <leader>h <action>(ShowHarpoon)
@@ -152,11 +136,14 @@ inoremap <A-r> <C-r>
 
 " Wrap to Column
 nmap gq :action com.andrewbrookins.idea.wrap.WrapAction<CR>
+nmap gq :action com.andrewbrookins.idea.wrap.WrapParagraphAction<CR>
+" fast peek
+nmap <Leader>k :action com.github.vsuhanov.fastpeek.peek<CR>
 
 "set which-key
 "set notimeout
 
-88" set ReplaceWithRegister
+" set ReplaceWithRegister
 
 "set keep-english-in-normal-and-restore-in-insert
 " —————— plugins & remap plugins shortcuts end ——————
@@ -247,7 +234,7 @@ nnoremap U :redo<CR>
 vnoremap U :redo<CR>
 " 新增：动态切换 J 的行为（标签切换 vs 合并行）
 let g:use_native_j = 0
-nnoremap <F12> :let g:use_native_j = !g:use_native_j<CR>:echo "Native J: " . (g:use_native_j ? "ON" : "OFF")<CR>
+nnoremap <F12> :let g:use_native_j = !g:use_native_j<CR>:echo 'Native J: ' . (g:use_native_j ? 'ON' : 'OFF')<CR>
 nnoremap <expr> J g:use_native_j ? 'J' : ':action PreviousTab<CR>'
 
 inoremap jj <ESC>
@@ -289,6 +276,7 @@ nnoremap <Leader>gi gi
 nnoremap <Leader>o :action OpenInBrowser<CR>
 nnoremap <Leader>m :action MavenRunHelperCleanInstall<CR>
 nnoremap <Leader>wp :action EditorToggleUseSoftWraps<CR>
+nnoremap <Leader>gh :action Vcs.ShowTabbedFileHistory<CR>
 
 " ---------- IDE g ----------
 nnoremap gd :action GotoDeclaration<CR>
@@ -311,79 +299,79 @@ nnoremap to :action RecentProjectListGroup<CR>
 nnoremap tp :action ShowPopupMenu<CR>
 
 " Which key config
-let g:WhichKeyDesc_Esc_Nohlsearch = "<Esc> Esc_Nohlsearch"
-let g:WhichKeyDesc_SearchWithClip = "<Leader>/ SearchWithClip"
+let g:WhichKeyDesc_Esc_Nohlsearch = '<Esc> Esc_Nohlsearch'
+let g:WhichKeyDesc_SearchWithClip = '<Leader>/ SearchWithClip'
 
-let g:WhichKeyDesc_EditVimConfig = "<Leader>ve EditVimConfig"
-let g:WhichKeyDesc_SaveVimConfig = "<Leader>vw SaveVimConfig"
-let g:WhichKeyDesc_ReloadVimConfig = "<Leader>vs ReloadVimConfig"
+let g:WhichKeyDesc_EditVimConfig = '<Leader>ve EditVimConfig'
+let g:WhichKeyDesc_SaveVimConfig = '<Leader>vw SaveVimConfig'
+let g:WhichKeyDesc_ReloadVimConfig = '<Leader>vs ReloadVimConfig'
 
-let g:WhichKeyDesc_InsertLeft = "<A-h> InsertLeft"
-let g:WhichKeyDesc_InsertRight = "<A-l> InsertRight"
-let g:WhichKeyDesc_InsertUp = "<A-k> InsertUp"
-let g:WhichKeyDesc_InsertDown = "<A-j> InsertDown"
-let g:WhichKeyDesc_InsertHome = "<A-a> InsertHome"
-let g:WhichKeyDesc_InsertEnd = "<A-e> InsertEnd"
-let g:WhichKeyDesc_InsertDelete = "<A-i> InsertDelete"
-let g:WhichKeyDesc_InsertBackspace = "<A-u> InsertBackspace"
+let g:WhichKeyDesc_InsertLeft = '<A-h> InsertLeft'
+let g:WhichKeyDesc_InsertRight = '<A-l> InsertRight'
+let g:WhichKeyDesc_InsertUp = '<A-k> InsertUp'
+let g:WhichKeyDesc_InsertDown = '<A-j> InsertDown'
+let g:WhichKeyDesc_InsertHome = '<A-a> InsertHome'
+let g:WhichKeyDesc_InsertEnd = '<A-e> InsertEnd'
+let g:WhichKeyDesc_InsertDelete = '<A-i> InsertDelete'
+let g:WhichKeyDesc_InsertBackspace = '<A-u> InsertBackspace'
 
-let g:WhichKeyDesc_RunAsDebug = ",d RunAsDebug"
-let g:WhichKeyDesc_Run = ",r Run"
-let g:WhichKeyDesc_CompileDirty = ",c CompileDirty"
-let g:WhichKeyDesc_ToggleLineBreakpoint = ",b ToggleLineBreakpoint"
-let g:WhichKeyDesc_ViewBreakpoints = ",v ViewBreakpoints"
-let g:WhichKeyDesc_EditBreakpoint = ",e EditBreakpoint"
-let g:WhichKeyDesc_Stop = ",s Stop"
+let g:WhichKeyDesc_RunAsDebug = ',d RunAsDebug'
+let g:WhichKeyDesc_Run = ',r Run'
+let g:WhichKeyDesc_CompileDirty = ',c CompileDirty'
+let g:WhichKeyDesc_ToggleLineBreakpoint = ',b ToggleLineBreakpoint'
+let g:WhichKeyDesc_ViewBreakpoints = ',v ViewBreakpoints'
+let g:WhichKeyDesc_EditBreakpoint = ',e EditBreakpoint'
+let g:WhichKeyDesc_Stop = ',s Stop'
 
-let g:WhichKeyDesc_Redo = "U Redo"
-let g:WhichKeyDesc_NormalMode = "<Leader>n NormalMode"
+let g:WhichKeyDesc_Redo = 'U Redo'
+let g:WhichKeyDesc_NormalMode = '<Leader>n NormalMode'
 
-let g:WhichKeyDesc_SplitHorizon = "<C-减号> SplitHorizon"
-let g:WhichKeyDesc_SplitVertical = "<C-反斜杠> SplitVertical"
-let g:WhichKeyDesc_Move2LeftWindow = "<C-h> Move2LeftWindow"
-let g:WhichKeyDesc_Move2RightWindow = "<C-l> Move2RightWindow"
-let g:WhichKeyDesc_Move2BeloWindow = "<C-j> Move2BeloWindow"
-let g:WhichKeyDesc_Move2AboveWindow = "<C-k> Move2AboveWindow"
+let g:WhichKeyDesc_SplitHorizon = '<C-减号> SplitHorizon'
+let g:WhichKeyDesc_SplitVertical = '<C-反斜杠> SplitVertical'
+let g:WhichKeyDesc_Move2LeftWindow = '<C-h> Move2LeftWindow'
+let g:WhichKeyDesc_Move2RightWindow = '<C-l> Move2RightWindow'
+let g:WhichKeyDesc_Move2BeloWindow = '<C-j> Move2BeloWindow'
+let g:WhichKeyDesc_Move2AboveWindow = '<C-k> Move2AboveWindow'
 
-let g:WhichKeyDesc_Copied2SysClipBoard = "<Leader>y Copied2SysClipBoard"
-let g:WhichKeyDesc_PasteFrom0Reg = "<Leader>p PasteFrom0Reg"
-let g:WhichKeyDesc_PasteFromSysClipBoard = "<Leader>P PasteFromSysClipBoard"
+let g:WhichKeyDesc_Copied2SysClipBoard = '<Leader>y Copied2SysClipBoard'
+let g:WhichKeyDesc_PasteFrom0Reg = '<Leader>p PasteFrom0Reg'
+let g:WhichKeyDesc_PasteFromSysClipBoard = '<Leader>P PasteFromSysClipBoard'
 
-let g:WhichKeyDesc_CopiedLine2SysClipBoard = "yy CopiedLine2SysClipBoard"
+let g:WhichKeyDesc_CopiedLine2SysClipBoard = 'yy CopiedLine2SysClipBoard'
 
 " plugins
-let g:WhichKeyDesc_EasyMotion = "<Leader>f EasyMotion"
+let g:WhichKeyDesc_EasyMotion = '<Leader>f EasyMotion'
 
-let g:WhichKeyDesc_NextWholeOccurrence = "<A-S-j> NextWholeOccurrence"
-let g:WhichKeyDesc_SkipOccurrence = "<A-S-n> SkipOccurrence"
-let g:WhichKeyDesc_RemoveOccurrence = "<A-S-k> RemoveOccurrence"
-let g:WhichKeyDesc_AllWholeOccurrences = "<C-A-j> AllWholeOccurrences"
+let g:WhichKeyDesc_NextWholeOccurrence = '<A-S-j> NextWholeOccurrence'
+let g:WhichKeyDesc_SkipOccurrence = '<A-S-n> SkipOccurrence'
+let g:WhichKeyDesc_RemoveOccurrence = '<A-S-k> RemoveOccurrence'
+let g:WhichKeyDesc_AllWholeOccurrences = '<C-A-j> AllWholeOccurrences'
 " g
-let g:WhichKeyDesc_GotoImplementation = "gi GotoImplementation"
-let g:WhichKeyDesc_GotoSuperMethod = "gs GotoSuperMethod"
-let g:WhichKeyDesc_ShowUsages = "gu ShowUsages"
-let g:WhichKeyDesc_GotoFile = "gf GotoFile"
-let g:WhichKeyDesc_Back = "gj Back"
-let g:WhichKeyDesc_Forward = "gk Forward"
-let g:WhichKeyDesc_QuickJavaDoc = "gh QuickJavaDoc"
-let g:WhichKeyDesc_GotoSymbol = "gm GotoSymbol"
-let g:WhichKeyDesc_CommentByLineComment = "gcc CommentByLineComment"
+let g:WhichKeyDesc_GotoImplementation = 'gi GotoImplementation'
+let g:WhichKeyDesc_GotoSuperMethod = 'gs GotoSuperMethod'
+let g:WhichKeyDesc_ShowUsages = 'gu ShowUsages'
+let g:WhichKeyDesc_GotoFile = 'gf GotoFile'
+let g:WhichKeyDesc_Back = 'gj Back'
+let g:WhichKeyDesc_Forward = 'gk Forward'
+let g:WhichKeyDesc_QuickJavaDoc = 'gh QuickJavaDoc'
+let g:WhichKeyDesc_GotoSymbol = 'gm GotoSymbol'
+let g:WhichKeyDesc_CommentByLineComment = 'gcc CommentByLineComment'
 " t
-let g:WhichKeyDesc_Annotate = "ta Annotate"
-let g:WhichKeyDesc_FileStructurePopup = "tf FileStructurePopup"
-let g:WhichKeyDesc_QuickActions = "ti QuickActions"
-let g:WhichKeyDesc_RecentProjectListGroup = "to RecentProjectListGroup"
-let g:WhichKeyDesc_ShowPopupMenu = "tp ShowPopupMenu"
+let g:WhichKeyDesc_Annotate = 'ta Annotate'
+let g:WhichKeyDesc_FileStructurePopup = 'tf FileStructurePopup'
+let g:WhichKeyDesc_QuickActions = 'ti QuickActions'
+let g:WhichKeyDesc_RecentProjectListGroup = 'to RecentProjectListGroup'
+let g:WhichKeyDesc_ShowPopupMenu = 'tp ShowPopupMenu'
 
-let g:WhichKeyDesc_ShowErrorDescription = "<Leader>er ShowErrorDescription"
+let g:WhichKeyDesc_ShowErrorDescription = '<Leader>er ShowErrorDescription'
 
-let g:WhichKeyDesc_ToggleZenMode = "<Leader>1 ToggleZenMode"
-let g:WhichKeyDesc_ToggleFullScreen = "<Leader>2 ToggleFullScreen"
+let g:WhichKeyDesc_ToggleZenMode = '<Leader>1 ToggleZenMode'
+let g:WhichKeyDesc_ToggleFullScreen = '<Leader>2 ToggleFullScreen'
 
-let g:WhichKeyDesc_ShowErrorDescription = "<Leader>er ShowErrorDescription"
-let g:WhichKeyDesc_Refactorings.QuickListPopupAction = "<Leader>r1 Refactorings.QuickListPopupAction"
-let g:WhichKeyDesc_RenameFile = "<Leader>rf RenameFile"
-let g:WhichKeyDesc_Quit = "<Leader>qq Quit"
-let g:WhichKeyDesc_CloseAllEditorsButActive = "<Leader>qa CloseAllEditorsButActive"
-let g:WhichKeyDesc_CloseAllToTheLeft = "<Leader>qh CloseAllToTheLeft"
-let g:WhichKeyDesc_CloseAllToTheRight = "<Leader>ql CloseAllToTheRight"
+let g:WhichKeyDesc_ShowErrorDescription = '<Leader>er ShowErrorDescription'
+let g:WhichKeyDesc_Refactorings.QuickListPopupAction = '<Leader>r1 Refactorings.QuickListPopupAction'
+let g:WhichKeyDesc_RenameFile = '<Leader>rf RenameFile'
+let g:WhichKeyDesc_Quit = '<Leader>qq Quit'
+let g:WhichKeyDesc_CloseAllEditorsButActive = '<Leader>qa CloseAllEditorsButActive'
+let g:WhichKeyDesc_CloseAllToTheLeft = '<Leader>qh CloseAllToTheLeft'
+let g:WhichKeyDesc_CloseAllToTheRight = '<Leader>ql CloseAllToTheRight'
