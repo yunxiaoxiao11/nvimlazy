@@ -9,7 +9,7 @@ set hls "hlsearch
 set is "incsearch
 set scs "smartcase
 set ic "ignorecase
-" nnoremap <Leader>sc :set scs!<CR>
+nnoremap <Leader>sc :set scs!<CR>
 " nnoremap <Leader>ic :set ic!<CR>
 nnoremap <ESC> <ESC>:noh<CR>
 vnoremap <ESC> <ESC>:noh<CR>
@@ -24,21 +24,20 @@ set scrolloff=5
 set showcmd
 set nu
 set rnu "relativenumber
-" nnoremap <Leader>nu :set nu!<CR>
+nnoremap <Leader>nu :set nu!<CR>
 nnoremap <Leader>rnu :set rnu!<CR>
 vnoremap <A--> :b#<CR>
 nnoremap <A--> :b#<CR>
 inoremap <A--> <C-o>:b#<CR>
 
 " —————— plugins & remap plugins shortcuts start ——————
-"set easymotion
-"map <Leader>f <Plug>(easymotion-s)
-"nnoremap <Leader>; :action AceLineStartsAction<CR>
-
 map s <Action>(flash.search)
 omap r <Action>(flash.remote)
 nmap S <Action>(flash.treesitter)
 xmap S <Action>(flash.treesitter)
+
+" nmap / <Action>(cmdfloat.search)
+" vmap / <Action>(cmdfloat.search)
 
 set quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -115,8 +114,8 @@ let g:dial_custom_definitions = [
     ['normalizedCasePattern', ['alpha', 'beta', 'gamma']],
     ['pattern', ['start', 'middle', 'end']]
 ]
-nnoremap [ :DialIncrement<cr>
-nnoremap ] :DialDecrement<cr>
+nnoremap ] :DialIncrement<cr>
+nnoremap [ :DialDecrement<cr>
 
 " HarpoonIJ
 nmap <leader>h <action>(ShowHarpoon)
@@ -143,7 +142,7 @@ nmap <Leader>k :action com.github.vsuhanov.fastpeek.peek<CR>
 "set which-key
 "set notimeout
 
-" set ReplaceWithRegister
+set ReplaceWithRegister
 
 "set keep-english-in-normal-and-restore-in-insert
 " —————— plugins & remap plugins shortcuts end ——————
@@ -277,6 +276,7 @@ nnoremap <Leader>o :action OpenInBrowser<CR>
 nnoremap <Leader>m :action MavenRunHelperCleanInstall<CR>
 nnoremap <Leader>wp :action EditorToggleUseSoftWraps<CR>
 nnoremap <Leader>gh :action Vcs.ShowTabbedFileHistory<CR>
+nnoremap <Leader>of :action RevealIn<CR>
 
 " ---------- IDE g ----------
 nnoremap gd :action GotoDeclaration<CR>
